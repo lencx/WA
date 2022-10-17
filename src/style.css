@@ -15,3 +15,7 @@ body,
   --theme-yellow: #E8D388;
   --theme-icon: var(--theme-blue);
 }
+
+.wa-ico {
+  cursor: pointer;
+}
