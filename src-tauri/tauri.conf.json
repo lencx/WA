@@ -11,12 +11,15 @@
   },
   "tauri": {
     "allowlist": {
-      "all": true
+      "all": true,
+      "fs": {
+        "scope": ["$HOME/.wa/*"]
+      }
     },
     "bundle": {
       "active": true,
       "category": "DeveloperTool",
-      "copyright": "",
+      "copyright": "lencx",
       "deb": {
         "depends": []
       },
@@ -28,8 +31,8 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
-      "longDescription": "",
+      "identifier": "com.lencx.wa",
+      "longDescription": "🤩 WA+ = W(eb) + A(pp) + more...",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
