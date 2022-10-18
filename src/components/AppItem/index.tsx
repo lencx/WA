@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { WebviewWindow } from '@tauri-apps/api/window';
+import { invoke } from '@tauri-apps/api/tauri';
 
 import waIcon from '@/assets/logo.svg';
 import './index.scss';
@@ -16,21 +16,18 @@ interface AppItemProps {
 }
 
 const AppItem: FC<AppItemProps> = ({ type, app }) => {
-  const handleClick = () => {
+  const isSvg = /<\s*svg[^>]*>(.*?)<\/\s*svg>/g.test(app?.icon);
+  const handleClick = async () => {
     if (!app.url) return;
-    const webview = new WebviewWindow(app.name, {
-      url: app.url,
-      title: `${type} / ${app.name}`,
-    });
-    webview.once('tauri://created', () => {
-      // TODO:
-    })
+    await invoke('new_wa', { label: Date.now().toString(16), title: `${type} / ${app.name}`, url: app.url });
   };
 
   return (
-    <div className="wa-app-item" onClick={handleClick}>
-      <div className="app-icon" style={{ backgroundImage: `url(${waIcon})`}} />
-      <div>{app.name}</div>
+    <div className="wa-app-item" onClick={handleClick} title={app.name}>
+      {isSvg
+        ? <i className="app-icon" dangerouslySetInnerHTML={{ __html: app.icon }} />
+        : <img className="app-icon" src={app.icon ? app.icon : waIcon} /> }
+      <div className="app-name">{app.name}</div>
     </div>
   )
 }

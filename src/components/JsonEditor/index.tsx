@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import MonacoEditor from '@monaco-editor/react';
-// import { Allotment } from 'allotment';
-// import 'allotment/dist/style.css';
 
 import './index.scss';
 

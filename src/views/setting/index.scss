@@ -1,0 +1,23 @@
+.setting {
+  .setting-taskbar {
+    display: flex;
+    height: 30px;
+    align-items: center;
+
+    .file {
+      display: inline-block;
+      height: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      background-color: var(--theme-blue);
+      color: #fff;
+      border-radius: 5px;
+      line-height: 20px;
+      padding: 0 10px;
+    }
+  }
+
+  .wa-editor-container {
+    height: calc(100vh - 30px);
+  }
+}

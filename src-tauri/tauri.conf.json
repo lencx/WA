@@ -16,6 +16,12 @@
         "scope": ["$HOME/.wa/*"]
       }
     },
+    "pattern": {
+      "use": "isolation",
+      "options": {
+        "dir": "../dist-isolation"
+      }
+    },
     "bundle": {
       "active": true,
       "category": "DeveloperTool",

@@ -18,4 +18,6 @@ body,
 
 .wa-ico {
   cursor: pointer;
+  display: inline-block;
+  line-height: 0;
 }

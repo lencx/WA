@@ -1,7 +1,36 @@
 .wa-app-item {
+  border-radius: 10px;
+  cursor: pointer;
+  flex-wrap: wrap;
+  margin: 2px;
+  display: flex;
+  width: 60px;
+  height: 50px;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #efefef;
+  padding: 5px 0;
+
   .app-icon {
     width: 30px;
     height: 30px;
-    background-size: 100%;
+    user-select: none;
+
+    svg {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  .app-name {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 60px;
+    text-overflow: ellipsis;
   }
 }
