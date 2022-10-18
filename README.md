@@ -5,7 +5,11 @@
 
 > WA+ = W(eb) + A(pp) + more...
 
-[Download WA+](https://github.com/lencx/WA/releases)
+## 安装
+
+[📦 Download WA+](https://github.com/lencx/WA/releases)
+
+**注意：刚打开应用需要先点击右上角的设置按钮，初始化配置文件（第一次初始化编辑器，打开配置会比较慢），编辑会实时保存在本地，编辑完成后直接返回即可。**
 
 ## 关于
 
