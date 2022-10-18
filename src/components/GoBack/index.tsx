@@ -20,7 +20,7 @@ const GoBack: React.FC<GoBackProps> = ({ to = -1, className }) => {
   };
 
   return (
-    <span className="wa-ico wa-goback" onClick={handleBack}>
+    <span className="wa-ico wa-goback" onClick={handleBack} title="Go back">
       <svg
         className={clsx('ico-arrow', className)}
         viewBox="0 0 1024 1024"

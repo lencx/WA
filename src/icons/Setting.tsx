@@ -10,7 +10,7 @@ interface SettingIconProps {
 
 const SettingIcon: FC<SettingIconProps> = ({ className, color = `var(--theme-icon)`, onClick }) => {
   return (
-    <span className={clsx('wa-ico', className)} onClick={onClick}>
+    <span className={clsx('wa-ico', className)} onClick={onClick} title="Setting">
       <svg
         className="ico-setting"
         viewBox="0 0 1024 1024"

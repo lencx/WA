@@ -7,9 +7,15 @@
   },
   "package": {
     "productName": "WA+",
-    "version": "0.0.0"
+    "version": "../package.json"
   },
   "tauri": {
+    "updater": {
+      "active": true,
+      "dialog": true,
+      "endpoints": ["https://lencx.github.io/WA/install.json"],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDUyQUE5NzE3QTA4OTU0OEEKUldTS1ZJbWdGNWVxVW1rMnNzNW4yK1JLYXorZkVsc2hHTVUxd2plUGFORjhFcENxcnlnMVZLc1gK"
+    },
     "allowlist": {
       "all": true,
       "fs": {
@@ -57,9 +63,6 @@
     },
     "security": {
       "csp": null
-    },
-    "updater": {
-      "active": false
     },
     "windows": [
       {
