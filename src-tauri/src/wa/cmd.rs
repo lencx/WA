@@ -29,4 +29,11 @@ pub fn open(path: &str) {
         .args(["-R", path])
         .spawn()
         .unwrap();
+
+    // https://askubuntu.com/a/31071
+    #[cfg(target_os = "linux")]
+    Command::new("xdg-open")
+        .arg(path)
+        .spawn()
+        .unwrap();
 }
