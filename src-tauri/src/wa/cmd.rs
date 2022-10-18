@@ -30,10 +30,10 @@ pub fn open(path: &str) {
         .spawn()
         .unwrap();
 
-    // https://askubuntu.com/a/31071
-    #[cfg(target_os = "linux")]
-    Command::new("xdg-open")
-        .arg(path)
-        .spawn()
-        .unwrap();
+    // // https://askubuntu.com/a/31071
+    // #[cfg(target_os = "linux")]
+    // Command::new("xdg-open")
+    //     .arg(path)
+    //     .spawn()
+    //     .unwrap();
 }
