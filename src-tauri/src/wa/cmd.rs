@@ -2,6 +2,8 @@ const INIT_SCRIPT: &str = r#"
 console.log("WA+");
 "#;
 
+use std::process::Command;
+
 #[tauri::command]
 pub async fn new_wa(app: tauri::AppHandle, label: String, title: String, url: String) {
     let _window = tauri::WindowBuilder::new(
@@ -12,4 +14,19 @@ pub async fn new_wa(app: tauri::AppHandle, label: String, title: String, url: St
     .initialization_script(INIT_SCRIPT)
     .title(title)
     .build().unwrap();
+}
+
+#[tauri::command]
+pub fn open(path: &str) {
+    #[cfg(target_os = "windows")]
+    Command::new("explorer")
+        .args(["/select", path])
+        .spawn()
+        .unwrap();
+
+    #[cfg(target_os = "macos")]
+    Command::new("open")
+        .args(["-R", path])
+        .spawn()
+        .unwrap();
 }

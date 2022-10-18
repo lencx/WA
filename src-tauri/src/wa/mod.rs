@@ -1,3 +1,3 @@
 pub mod conf;
 pub mod setup;
-pub mod window;
+pub mod cmd;

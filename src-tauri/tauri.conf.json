@@ -20,6 +20,14 @@
       "all": true,
       "fs": {
         "scope": ["$HOME/.wa/*"]
+      },
+      "dialog": {
+        "all": false,
+        "ask": false,
+        "confirm": false,
+        "message": false,
+        "open": true,
+        "save": false
       }
     },
     "pattern": {
