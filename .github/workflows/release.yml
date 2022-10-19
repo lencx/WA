@@ -36,8 +36,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # macos-latest, ubuntu-latest, windows-latest
-        platform: [macos-latest, windows-latest]
+        platform: [macos-latest, ubuntu-latest, windows-latest]
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -86,7 +85,7 @@ jobs:
 
       - name: Install app dependencies and build it
         run: yarn && yarn build
-      - uses: tauri-apps/tauri-action@v0
+      - uses: tauri-apps/tauri-action@v0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
