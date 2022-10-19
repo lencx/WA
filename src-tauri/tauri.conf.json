@@ -2,8 +2,9 @@
   "build": {
     "beforeDevCommand": "yarn dev",
     "beforeBuildCommand": "yarn build",
-    "devPath": "http://localhost:1420",
-    "distDir": "../dist"
+    "devPath": "http://localhost:3681",
+    "distDir": "../dist",
+    "withGlobalTauri": true
   },
   "package": {
     "productName": "WA+",
@@ -20,6 +21,9 @@
       "all": true,
       "fs": {
         "scope": ["$HOME/.wa/*"]
+      },
+      "globalShortcut": {
+        "all": true
       },
       "dialog": {
         "all": false,
@@ -78,7 +82,23 @@
         "height": 600,
         "resizable": true,
         "title": "WA+",
-        "width": 800
+        "width": 800,
+        "label": "main",
+        "url": "index.html"
+      },
+      {
+        "fullscreen": false,
+        "height": 60,
+        "width": 400,
+        "resizable": false,
+        "title": "WA+ Search",
+        "label": "search",
+        "url": "search.html",
+        "skipTaskbar": false,
+        "decorations": false,
+        "center": true,
+        "alwaysOnTop": true,
+        "visible": false
       }
     ]
   }

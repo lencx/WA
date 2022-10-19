@@ -9,7 +9,7 @@ pub async fn new_wa(app: tauri::AppHandle, label: String, title: String, url: St
     let _window = tauri::WindowBuilder::new(
         &app,
         label,
-        tauri::WindowUrl::App(url.into()),
+        tauri::WindowUrl::External(url.parse().unwrap()),
     )
     .initialization_script(INIT_SCRIPT)
     .title(title)
@@ -30,10 +30,10 @@ pub fn open(path: &str) {
         .spawn()
         .unwrap();
 
-    // // https://askubuntu.com/a/31071
-    // #[cfg(target_os = "linux")]
-    // Command::new("xdg-open")
-    //     .arg(path)
-    //     .spawn()
-    //     .unwrap();
+    // https://askubuntu.com/a/31071
+    #[cfg(target_os = "linux")]
+    Command::new("xdg-open")
+        .arg(path)
+        .spawn()
+        .unwrap();
 }

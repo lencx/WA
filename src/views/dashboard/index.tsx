@@ -14,7 +14,7 @@ export default function DashboardView() {
     (async () => {
       setContent(JSON.parse(await readSetting()));
     })();
-  }, [])
+  }, []);
 
   return (
     <div className="dashboard">

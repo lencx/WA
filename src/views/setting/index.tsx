@@ -52,7 +52,7 @@ export default function SettingView() {
   return (
     <div className="setting">
       <div className="setting-taskbar">
-        <GoBack />
+        <GoBack to="/" />
         <div className="file" onClick={handleOpenFile}>{filePath}</div>
       </div>
       <JsonEditor

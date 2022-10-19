@@ -19,7 +19,7 @@ const AppItem: FC<AppItemProps> = ({ type, app }) => {
   const isSvg = /<\s*svg[^>]*>(.*?)<\/\s*svg>/g.test(app?.icon);
   const handleClick = async () => {
     if (!app.url) return;
-    await invoke('new_wa', { label: Date.now().toString(16), title: `${type} / ${app.name}`, url: app.url });
+    await invoke('new_wa', { label: 'wa', title: `${type} / ${app.name}`, url: app.url });
   };
 
   return (
