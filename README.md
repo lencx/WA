@@ -5,11 +5,22 @@
 
 > WA+ = W(eb) + A(pp) + more...
 
-Make a web page more like a desktop application, powered by Tauri.
+Make a web page more like a desktop application. Powered by Tauri.
 
 ## Install
 
 [📦 Download WA+](https://github.com/lencx/WA/releases)
+
+## Feature
+
+- Multi-platform:
+  - `macOS`
+  - `Windows`
+  - `Linux`
+- Configuration via file: `~/.wa/setting.json`
+  - `name`
+  - `icon`
+  - `url`
 
 ## License
 
