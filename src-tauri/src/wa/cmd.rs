@@ -20,7 +20,7 @@ pub async fn new_wa(app: tauri::AppHandle, label: String, title: String, url: St
 pub fn open(path: &str) {
     #[cfg(target_os = "windows")]
     Command::new("explorer")
-        .args(["/select", path])
+        .args(["/select,", path])
         .spawn()
         .unwrap();
 
