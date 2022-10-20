@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import clsx from 'clsx';
 import { invoke } from '@tauri-apps/api/tauri';
 
 import waIcon from '@/assets/logo.svg';
@@ -13,17 +14,22 @@ export interface AppData {
 interface AppItemProps {
   type: string;
   app: AppData;
+  size?: 'lg' | 'sm';
 }
 
-const AppItem: FC<AppItemProps> = ({ type, app }) => {
+const AppItem: FC<AppItemProps> = ({ type, app, size = 'lg' }) => {
   const isSvg = /<\s*svg[^>]*>(.*?)<\/\s*svg>/g.test(app?.icon);
   const handleClick = async () => {
     if (!app.url) return;
-    await invoke('new_wa', { label: 'wa', title: `${type} / ${app.name}`, url: app.url });
+    await invoke('new_wa', {
+      label: Date.now().toString(16),
+      title: `${type} / ${app.name}`,
+      url: app.url,
+    });
   };
 
   return (
-    <div className="wa-app-item" onClick={handleClick} title={app.name}>
+    <div className={clsx('wa-app-item', size)} onClick={handleClick} title={app.name}>
       {isSvg
         ? <i className="app-icon" dangerouslySetInnerHTML={{ __html: app.icon }} />
         : <img className="app-icon" src={app.icon ? app.icon : waIcon} /> }

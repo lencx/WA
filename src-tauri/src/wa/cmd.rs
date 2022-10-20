@@ -9,7 +9,7 @@ pub async fn new_wa(app: tauri::AppHandle, label: String, title: String, url: St
     let _window = tauri::WindowBuilder::new(
         &app,
         label,
-        tauri::WindowUrl::External(url.parse().unwrap()),
+        tauri::WindowUrl::App(url.parse().unwrap()),
     )
     .initialization_script(INIT_SCRIPT)
     .title(title)

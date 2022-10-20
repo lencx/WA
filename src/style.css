@@ -13,6 +13,7 @@ body,
   --theme-red: #EF7A7A;
   --theme-blue: #80C0E4;
   --theme-yellow: #E8D388;
+  --theme-gray: #B8B8B8;
   --theme-icon: var(--theme-blue);
 }
 

@@ -1,8 +1,11 @@
 .wa-search {
+  display: flex;
+  align-items: center;
+
   input {
     all: unset;
     height: 60px;
-    width: 400px;
+    width: 320px;
     padding: 0 10px;
   }
 }

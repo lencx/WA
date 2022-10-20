@@ -1,5 +1,9 @@
 # UPDATE LOG
 
+## v0.1.2
+
+- feat: add shortcut
+
 ## v0.1.1
 
 fix: app item style

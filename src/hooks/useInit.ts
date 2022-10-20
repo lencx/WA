@@ -1,8 +1,11 @@
-import { useCallback, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 export default function useInit(callback: () => void) {
-  const handleCallback = useCallback(callback, [callback]);
+  const isInit = useRef(true);
   useEffect(() => {
-    handleCallback();
+    if (isInit.current) {
+      callback();
+      isInit.current = false;
+    }
   }, [])
 }

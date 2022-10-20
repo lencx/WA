@@ -1,0 +1,17 @@
+.wa-tip {
+  font-size: 12px;
+  line-height: 20px;
+
+  h3 {
+    margin: 12px 0 5px;
+    font-size: 13px;
+  }
+
+  .shortcut-global .item {
+    color: var(--theme-blue);
+  }
+
+  .shortcut-wa .item {
+    color: var(--theme-gray);
+  }
+}

@@ -3,14 +3,23 @@
   cursor: pointer;
   margin: 2px;
   display: flex;
-  width: 60px;
-  height: 50px;
   text-align: center;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background-color: #efefef;
-  padding: 5px 0;
+
+  &.lg {
+    width: 60px;
+    height: 50px;
+    padding: 5px 0;
+  }
+
+  &.sm {
+    width: 56px;
+    height: 50px;
+    padding: 3px 0;
+  }
 
   .app-icon {
     width: 30px;
