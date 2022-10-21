@@ -16,7 +16,14 @@ Make a web page more like a desktop application. Powered by Tauri.
 - Multi-platform: `macOS` `Windows` `Linux`
 - Configuration via file: `~/.wa/setting.json`
 - Custom scripts: `~/.wa/` is the script root path, please use a relative path, such as `./scripts/user.js`
-- Shortcut
+- Custom Shortcut
+
+## Preview
+
+![wa-dashboard](./assets/wa-dashboard.png)
+![wa-setting](./assets/wa-setting.png)
+![wa-new-window](./assets/wa-new-window.png)
+![wa-script-error](./assets/wa-script-error.png)
 
 ## 开发教程
 
