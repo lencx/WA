@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "tauri": "tauri",
     "updater": "node scripts/updater.mjs",
-    "release": "node scripts/release.mjs"
+    "release": "node scripts/release.mjs",
+    "fix:linux": "node scripts/build.linux.mjs"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.4.6",

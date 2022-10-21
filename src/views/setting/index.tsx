@@ -7,7 +7,7 @@ import debounce from 'lodash/debounce';
 
 import useInit from '@/hooks/useInit';
 import GoBack from '@/components/GoBack';
-import JsonEditor from '@/components/JsonEditor';
+import Editor from '@/components/Editor';
 import { SETTING_DATA, settingPath, readSetting, writeSetting } from '@/utils';
 import './index.scss';
 
@@ -49,7 +49,7 @@ export default function SettingView() {
         {!isShortcut && <GoBack to="/" />}
         <div className="file" onClick={handleOpenFile}>{filePath}</div>
       </div>
-      <JsonEditor
+      <Editor
         defaultValue={content}
         onChange={handleEdit}
       />

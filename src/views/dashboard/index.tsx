@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { listen } from '@tauri-apps/api/event';
 import { WebviewWindow } from '@tauri-apps/api/window';
+// import { listen } from '@tauri-apps/api/event';
 
 import useSetting from '@/hooks/useSetting';
 import WaTip from '@/components/WaTip';
@@ -17,13 +17,13 @@ export default function DashboardView() {
   useSetting(async (data) => {
     setContent(data);
     WebviewWindow.getByLabel('main')?.setTitle(data?.title || 'WA+');
-    const mainListen = await listen('setting-update', (newData) => {
-      console.log('«22» /views/dashboard/index.tsx ~> ', newData);
-      // const _data = JSON.parse(data.payload);
-      // setContent(_data);
-    });
-    mainListen();
-  })
+    // const mainListen = await listen('setting-update', (newData) => {
+    //   console.log('«22» /views/dashboard/index.tsx ~> ', newData);
+    //   // const _data = JSON.parse(data.payload);
+    //   // setContent(_data);
+    // });
+    // mainListen();
+  }, false)
 
   return (
     <div className="dashboard">

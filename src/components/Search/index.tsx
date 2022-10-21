@@ -10,6 +10,8 @@ export default function Search() {
   const data = useSetting();
   const [inputVal, setInput] = useState('');
   const [searchData, setSearchData] = useState<AppData & { type: string } | null>(null);
+  console.log('«13» /components/Search/index.tsx ~> ', data?.app);
+
   const appList = data?.app?.reduce((a: any, b: any) => {
     const items = b.items.map((i: any) => ({ ...i, type: b.type }));
     return [...a, ...items];
@@ -39,6 +41,8 @@ export default function Search() {
       setSearchData(null);
       return;
     }
+    console.log('«42» /components/Search/index.tsx ~> ', appList, val);
+
     const findData = appList?.find((i: AppData) => new RegExp(val, 'ig').test(i.name));
     setSearchData(findData);
   };
@@ -54,7 +58,7 @@ export default function Search() {
         autoCapitalize="off"
         spellCheck="false"
       />
-      {searchData && <AppItem size="sm" type={searchData.type} app={searchData} />}
+      {searchData && <AppItem size="sm" disabled type={searchData.type} app={searchData} />}
     </div>
   )
 }

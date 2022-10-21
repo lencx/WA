@@ -9,22 +9,26 @@ export interface AppData {
   name: string;
   icon: string;
   url: string;
+  script?: string;
 }
 
 interface AppItemProps {
   type: string;
   app: AppData;
   size?: 'lg' | 'sm';
+  disabled?: boolean;
 }
 
-const AppItem: FC<AppItemProps> = ({ type, app, size = 'lg' }) => {
+const AppItem: FC<AppItemProps> = ({ type, app, size = 'lg', disabled = false }) => {
   const isSvg = /<\s*svg[^>]*>(.*?)<\/\s*svg>/g.test(app?.icon);
   const handleClick = async () => {
+    if (disabled) return;
     if (!app.url) return;
     await invoke('new_wa', {
       label: Date.now().toString(16),
       title: `${type} / ${app.name}`,
       url: app.url,
+      script: app?.script,
     });
   };
 
