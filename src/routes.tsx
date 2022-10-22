@@ -4,6 +4,7 @@ import type { RouteObject } from 'react-router-dom';
 
 import DashboardView from '@/views/dashboard';
 import SettingView from '@/views/setting';
+import ScriptsView from '@/views/script';
 
 const routes: RouteObject[] = [
   {
@@ -13,6 +14,10 @@ const routes: RouteObject[] = [
   {
     path: '/setting',
     element: <SettingView />,
+  },
+  {
+    path: '/script',
+    element: <ScriptsView />,
   },
 ];
 

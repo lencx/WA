@@ -11,7 +11,7 @@ import './index.scss';
 
 export default function DashboardView() {
   const navigate = useNavigate();
-  const [content, setContent] = useState<Record<string, any>>({});
+  const [content, setContent] = useState<Record<string, any>>();
   const hasApps = content?.app?.length > 0;
 
   useSetting(async (data) => {
@@ -24,6 +24,14 @@ export default function DashboardView() {
     // });
     // mainListen();
   }, false)
+
+  if (!content) {
+    return (
+      <div className="wa-loading">
+        <span>loading...</span>
+      </div>
+    )
+  }
 
   return (
     <div className="dashboard">
