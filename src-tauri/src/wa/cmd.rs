@@ -1,23 +1,29 @@
 use std::{fs, process::Command};
-use tauri::Manager;
 use tauri::api::dialog;
+use tauri::Manager;
 
-use crate::wa::conf;
 use crate::utils;
+use crate::wa::conf;
 
 #[tauri::command]
-pub async fn new_wa(app: tauri::AppHandle, label: String, title: String, url: String, script: Option<String>) {
+pub async fn new_wa(
+    app: tauri::AppHandle,
+    label: String,
+    title: String,
+    url: String,
+    script: Option<String>,
+) {
     let mut user_script = conf::INIT_SCRIPT.to_string();
     if !script.is_none() && !script.as_ref().unwrap().is_empty() {
-      let script = utils::wa_path(&script.unwrap());
-      let script_path = script.clone().to_string_lossy().to_string();
-      let content = fs::read_to_string(script).unwrap_or_else(|msg| {
-        let main_window = app.get_window("main").unwrap();
-        let err_msg = format!("[app.items.script] {}\n{}", script_path, msg.to_string());
-        dialog::message(Some(&main_window), &title, err_msg);
-        "".to_string()
-      });
-      user_script = format!("{}{}", conf::INIT_SCRIPT.to_string(), content);
+        let script = utils::wa_path(&script.unwrap());
+        let script_path = script.clone().to_string_lossy().to_string();
+        let content = fs::read_to_string(script).unwrap_or_else(|msg| {
+            let main_window = app.get_window("main").unwrap();
+            let err_msg = format!("[app.items.script] {}\n{}", script_path, msg.to_string());
+            dialog::message(Some(&main_window), &title, err_msg);
+            "".to_string()
+        });
+        user_script = format!("{}{}", conf::INIT_SCRIPT.to_string(), content);
     }
 
     std::thread::spawn(move || {
@@ -42,15 +48,9 @@ pub fn open(path: &str) {
         .unwrap();
 
     #[cfg(target_os = "macos")]
-    Command::new("open")
-        .args(["-R", path])
-        .spawn()
-        .unwrap();
+    Command::new("open").args(["-R", path]).spawn().unwrap();
 
     // https://askubuntu.com/a/31071
     #[cfg(target_os = "linux")]
-    Command::new("xdg-open")
-        .arg(path)
-        .spawn()
-        .unwrap();
+    Command::new("xdg-open").arg(path).spawn().unwrap();
 }

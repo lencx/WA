@@ -3,8 +3,7 @@ use tauri::{App, Manager};
 use window_shadows::set_shadow;
 
 pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>> {
-    let search_window = app
-        .get_window("search").unwrap();
+    let search_window = app.get_window("search").unwrap();
     set_shadow(&search_window, true).expect("Unsupported platform!");
 
     let setting_file = &utils::wa_path("setting.json").to_owned();
