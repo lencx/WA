@@ -1,25 +1,13 @@
-// window.open not working: https://github.com/tauri-apps/wry/issues/649
-const INIT_SCRIPT: &str = r#"
-(function wa_init() {
-  window.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('a').forEach(function(i) {
-      if (i.getAttribute('target') === '_blank') {
-        i.setAttribute('target', '_self')
-      }
-    });
-  });
-})();
-"#;
-
 use std::{fs, process::Command};
 use tauri::Manager;
 use tauri::api::dialog;
 
+use crate::wa::conf;
 use crate::utils;
 
 #[tauri::command]
 pub async fn new_wa(app: tauri::AppHandle, label: String, title: String, url: String, script: Option<String>) {
-    let mut user_script = INIT_SCRIPT.to_string();
+    let mut user_script = conf::INIT_SCRIPT.to_string();
     if !script.is_none() && !script.as_ref().unwrap().is_empty() {
       let script = utils::wa_path(&script.unwrap());
       let script_path = script.clone().to_string_lossy().to_string();
@@ -29,7 +17,7 @@ pub async fn new_wa(app: tauri::AppHandle, label: String, title: String, url: St
         dialog::message(Some(&main_window), &title, err_msg);
         "".to_string()
       });
-      user_script = format!("{}{}", INIT_SCRIPT.to_string(), content);
+      user_script = format!("{}{}", conf::INIT_SCRIPT.to_string(), content);
     }
 
     std::thread::spawn(move || {
