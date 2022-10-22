@@ -9,9 +9,8 @@ pub const INIT_SCRIPT: &str = r#"
     }
   }
   window.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('a').forEach(function(i) {setAttr(i)});
+    document.querySelectorAll('a').forEach(setAttr);
     new MutationObserver(function (mutationsList) {
-      console.log(mutationsList);
       for (const mutation of mutationsList) {
         if (mutation.type === 'childList') {
           if (mutation.addedNodes.length) {
@@ -22,9 +21,7 @@ pub const INIT_SCRIPT: &str = r#"
                   if (i.nodeName === 'A') {
                     setAttr(i);
                   } else {
-                    i.querySelectorAll('a').forEach(function(j) {
-                      setAttr(j);
-                    })
+                    i.querySelectorAll('a').forEach(setAttr);
                   }
                 })
               }

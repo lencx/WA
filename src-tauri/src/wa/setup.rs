@@ -1,6 +1,7 @@
-use crate::utils;
 use tauri::{App, Manager};
 use window_shadows::set_shadow;
+
+use crate::utils;
 
 pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>> {
     let search_window = app.get_window("search").unwrap();

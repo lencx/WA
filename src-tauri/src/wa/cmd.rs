@@ -1,6 +1,5 @@
 use std::{fs, process::Command};
-use tauri::api::dialog;
-use tauri::Manager;
+use tauri::{api::dialog, Manager};
 
 use crate::utils;
 use crate::wa::conf;
