@@ -1,14 +1,22 @@
 import { useState } from 'react';
 
 import useInit from '@/hooks/useInit';
-import { settingJSON } from '@/utils';
+import { SETTING_DATA, readSetting } from '@/utils';
 
-export default function useSetting<T extends Record<string, any>>(callback?: (data: T) => void, isInit = true) {
-  const [data, setData] = useState<T>();
+export default function useSetting(callback?: (data: any) => void, isInit = true) {
+  const [data, setData] = useState<any>();
   useInit(async () => {
-    const settingData = await settingJSON(isInit);
-    setData(settingData);
-    callback && callback(settingData);
+    try {
+      const settingData = JSON.parse(await readSetting());
+      setData(settingData)
+      callback && callback(settingData);
+    } catch(e) {
+      if (isInit) {
+        callback && callback(SETTING_DATA);
+        setData(SETTING_DATA);
+      }
+      callback && callback('JSON Parse Error');
+    }
   });
   return data;
 }

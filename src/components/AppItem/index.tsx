@@ -21,10 +21,11 @@ interface AppItemProps {
 
 const AppItem: FC<AppItemProps> = ({ type, app, size = 'lg', disabled = false }) => {
   const isSvg = /<\s*svg[^>]*>(.*?)<\/\s*svg>/g.test(app?.icon);
-  const handleClick = async () => {
+
+  const handleWaWindow = async () => {
     if (disabled) return;
     if (!app.url) return;
-    await invoke('new_wa', {
+    await invoke('wa_window', {
       label: Date.now().toString(16),
       title: `${type} / ${app.name}`,
       url: app.url,
@@ -33,7 +34,7 @@ const AppItem: FC<AppItemProps> = ({ type, app, size = 'lg', disabled = false })
   };
 
   return (
-    <div className={clsx('wa-app-item', size)} onClick={handleClick} title={app.name}>
+    <div className={clsx('wa-app-item', size)} onClick={handleWaWindow} title={app.name}>
       {isSvg
         ? <i className="app-icon" dangerouslySetInnerHTML={{ __html: app.icon }} />
         : <img className="app-icon" src={app.icon ? app.icon : waIcon} /> }

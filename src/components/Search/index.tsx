@@ -8,10 +8,7 @@ import './index.scss';
 
 export default function Search() {
   const data = useSetting();
-  const [inputVal, setInput] = useState('');
   const [searchData, setSearchData] = useState<AppData & { type: string } | null>(null);
-  console.log('«13» /components/Search/index.tsx ~> ', data?.app);
-
   const appList = data?.app?.reduce((a: any, b: any) => {
     const items = b.items.map((i: any) => ({ ...i, type: b.type }));
     return [...a, ...items];
@@ -19,44 +16,41 @@ export default function Search() {
 
   const handleKeyDown = async (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      await WebviewWindow.getByLabel('search')?.hide();
-      setInput('');
-      setSearchData(null);
       if (searchData) {
-        await invoke('new_wa', {
+        await invoke('wa_window', {
           label: Date.now().toString(16),
           title: `${searchData.type} / ${searchData.name}`,
           url: searchData.url,
         });
+        await WebviewWindow.getByLabel('search')?.close();
         return;
       }
       await WebviewWindow.getByLabel('main')?.show();
+      await WebviewWindow.getByLabel('search')?.close();
     }
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
-    setInput(val);
     if (!val) {
       setSearchData(null);
       return;
     }
-    console.log('«42» /components/Search/index.tsx ~> ', appList, val);
-
     const findData = appList?.find((i: AppData) => new RegExp(val, 'ig').test(i.name));
     setSearchData(findData);
   };
 
   return (
-    <div className="wa-search">
+    <div className="wa-search" data-tauri-drag-region>
       <input
         type="text"
         onKeyDown={handleKeyDown}
         onChange={handleSearch}
-        value={inputVal}
         autoComplete="off"
         autoCapitalize="off"
         spellCheck="false"
+        data-tauri-drag-region
+        autoFocus
       />
       {searchData && <AppItem size="sm" disabled type={searchData.type} app={searchData} />}
     </div>

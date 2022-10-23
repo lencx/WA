@@ -85,20 +85,6 @@
         "width": 800,
         "label": "main",
         "url": "index.html"
-      },
-      {
-        "fullscreen": false,
-        "height": 60,
-        "width": 400,
-        "resizable": false,
-        "title": "WA+ Search",
-        "label": "search",
-        "url": "search.html",
-        "skipTaskbar": false,
-        "decorations": false,
-        "center": true,
-        "alwaysOnTop": true,
-        "visible": false
       }
     ]
   }

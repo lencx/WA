@@ -1,5 +1,10 @@
 # UPDATE LOG
 
+## v0.1.4
+
+- feat: spotlight search
+- feat: wa user scripts
+
 ## v0.1.3
 
 - feat: custom scripts

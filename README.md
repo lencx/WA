@@ -15,8 +15,9 @@ Make a web page more like a desktop application. Powered by Tauri.
 
 - Multi-platform: `macOS` `Windows` `Linux`
 - Configuration via file: `~/.wa/setting.json`
-- Custom scripts: `~/.wa/` is the script root path, please use a relative path, such as `./scripts/user.js`
+- Custom scripts: `~/.wa/scripts` is the script root path, please use a relative path, such as `./user.js`
 - Custom Shortcut
+- Spotlight Search
 
 ## Preview
 
@@ -24,6 +25,10 @@ Make a web page more like a desktop application. Powered by Tauri.
 ![wa-setting](./assets/wa-setting.png)
 ![wa-new-window](./assets/wa-new-window.png)
 ![wa-script-error](./assets/wa-script-error.png)
+
+## Sponsor
+
+<a href="https://github.com/lencx/sponsor" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
 ## 开发教程
 
@@ -34,10 +39,6 @@ Make a web page more like a desktop application. Powered by Tauri.
 - [GitHub Discussions - Tauri 系列](https://github.com/lencx/OhMyBox/discussions?discussions_q=label%3A%22Tauri+%E7%B3%BB%E5%88%97%22)
 - [知乎专栏 - Tauri 系列](https://www.zhihu.com/column/c_1519079232848785408)
 - [公众号 - Tauri 系列（免费篇 + 付费篇）](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzIzNjE2NTI3NQ==&action=getalbum&album_id=2593843659863752704&from_itemidx=1&from_msgid=2247485485#wechat_redirect) - `探索 Tauri 更多的能力`。免费篇和知乎专栏，GitHub Discussions 是同步更新的。付费内容针对性解决一些问题（涉及 Tauri 源码，解决思路等），不定期更新。原创不易，有能力的朋友可以支持一下，感恩。
-
-## 赞助
-
-[☕️ 请我喝杯咖啡](https://github.com/lencx/sponsor)
 
 ## License
 

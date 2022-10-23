@@ -1,18 +1,21 @@
 use std::{fs, process::Command};
-use tauri::{api::dialog, Manager};
+use tauri::WindowEvent;
+use tauri::{api::dialog, command, Manager};
+use window_shadows::set_shadow;
 
 use crate::utils;
-use crate::wa::conf;
+use crate::wa::window::set_transparent_titlebar;
 
-#[tauri::command]
-pub async fn new_wa(
+#[command]
+pub async fn wa_window(
     app: tauri::AppHandle,
     label: String,
     title: String,
     url: String,
     script: Option<String>,
 ) {
-    let mut user_script = conf::INIT_SCRIPT.to_string();
+    // window.open not working: https://github.com/tauri-apps/wry/issues/649
+    let mut user_script = include_str!("wa.js").to_string();
     if !script.is_none() && !script.as_ref().unwrap().is_empty() {
         let script = utils::wa_path(&script.unwrap());
         let script_path = script.clone().to_string_lossy().to_string();
@@ -22,7 +25,7 @@ pub async fn new_wa(
             dialog::message(Some(&main_window), &title, err_msg);
             "".to_string()
         });
-        user_script = format!("{}{}", conf::INIT_SCRIPT.to_string(), content);
+        user_script = format!("{}{}", user_script, content);
     }
 
     std::thread::spawn(move || {
@@ -38,8 +41,8 @@ pub async fn new_wa(
     });
 }
 
-#[tauri::command]
-pub fn open(path: &str) {
+#[command]
+pub fn open_file(path: &str) {
     #[cfg(target_os = "windows")]
     Command::new("explorer")
         .args(["/select,", path])
@@ -52,4 +55,55 @@ pub fn open(path: &str) {
     // https://askubuntu.com/a/31071
     #[cfg(target_os = "linux")]
     Command::new("xdg-open").arg(path).spawn().unwrap();
+}
+
+#[command]
+pub fn search_window(app: tauri::AppHandle) {
+    let win = app.get_window("search");
+    if win.is_none() {
+        let search_win = tauri::WindowBuilder::new(
+            &app,
+            "search",
+            tauri::WindowUrl::App("/search".parse().unwrap()),
+        )
+        .inner_size(400.0, 60.0)
+        .center()
+        .always_on_top(true)
+        .title("WA+ Search")
+        .resizable(false)
+        .focus()
+        .build()
+        .unwrap();
+
+        #[cfg(not(target_os = "linux"))]
+        set_shadow(&search_win, true).expect("Unsupported platform!");
+
+        #[cfg(target_os = "macos")]
+        set_transparent_titlebar(search_win, true, true);
+    }
+}
+
+#[command]
+pub fn setting_window(app: tauri::AppHandle) {
+    let win = app.get_window("setting");
+    if win.is_none() {
+        std::thread::spawn(move || {
+            let _setting_win = tauri::WindowBuilder::new(
+                &app,
+                "setting",
+                tauri::WindowUrl::App("/setting?mode=shortcut".parse().unwrap()),
+            )
+            .maximized(true)
+            .title("WA+ Setting")
+            .focus()
+            .build()
+            .unwrap()
+            .on_window_event(move |event| match event {
+                WindowEvent::Destroyed { .. } => {
+                    let _ = app.get_window("main").unwrap().emit("reload", "setting");
+                }
+                _ => (),
+            });
+        });
+    }
 }

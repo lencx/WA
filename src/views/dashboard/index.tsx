@@ -1,31 +1,33 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { WebviewWindow } from '@tauri-apps/api/window';
-// import { listen } from '@tauri-apps/api/event';
 
 import useSetting from '@/hooks/useSetting';
 import WaTip from '@/components/WaTip';
 import SettingIcon from '@/icons/Setting';
 import AppItem, { type AppData } from '@/components/AppItem';
 import './index.scss';
+import useInit from '@/hooks/useInit';
 
 export default function DashboardView() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const [content, setContent] = useState<Record<string, any>>();
   const hasApps = content?.app?.length > 0;
 
   useSetting(async (data) => {
     setContent(data);
     WebviewWindow.getByLabel('main')?.setTitle(data?.title || 'WA+');
-    // const mainListen = await listen('setting-update', (newData) => {
-    //   console.log('«22» /views/dashboard/index.tsx ~> ', newData);
-    //   // const _data = JSON.parse(data.payload);
-    //   // setContent(_data);
-    // });
-    // mainListen();
+    setLoading(false);
   }, false)
 
-  if (!content) {
+  useInit(async () => {
+    WebviewWindow.getByLabel('main')?.listen('reload', () => {
+      window.location.reload();
+    })
+  });
+
+  if (loading) {
     return (
       <div className="wa-loading">
         <span>loading...</span>

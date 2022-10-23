@@ -24,20 +24,16 @@ export async function settingPath() {
 }
 
 export async function readSetting() {
-  return await readTextFile('.wa/setting.json', { dir: BaseDirectory.Home });
-}
-
-export async function settingJSON(isInit = true) {
-  try {
-    return JSON.parse(await readSetting());
-  } catch(e) {
-    if (isInit) return SETTING_DATA;
-    throw 'JSON Parse Error'
-  }
+  return await readTextFile(await settingPath());
 }
 
 export async function writeSetting(content: string) {
   await writeTextFile('.wa/setting.json', content, { dir: BaseDirectory.Home });
+}
+
+export async function scriptPath() {
+  const home = await homeDir();
+  return join(home, ".wa", "scripts");
 }
 
 // https://vitejs.dev/guide/env-and-mode.html#env-variables
@@ -45,12 +41,10 @@ export function tauriLink(path: string) {
   return import.meta.env.DEV ? `http://localhost:3681${path}` : `tauri://localhost${path}`;
 }
 
-export function waShortcut(cmd: 'setting', callback: Function) {
+export function waSettingShortcut(callback: Function) {
   document.addEventListener('keyup', function (e) {
-    if (cmd === 'setting') {
-      if ((e.key === ',' && e.metaKey) || (e.key === ',' && e.ctrlKey)) {
-        callback();
-      }
+    if ((e.key === ',' && e.metaKey) || (e.key === ',' && e.ctrlKey)) {
+      callback();
     }
   })
 }
