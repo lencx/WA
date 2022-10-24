@@ -4,7 +4,9 @@ use tauri::{api::dialog, command, Manager};
 use window_shadows::set_shadow;
 
 use crate::utils;
-use crate::wa::window::set_transparent_titlebar;
+
+#[cfg(target_os = "macos")]
+use crate::wa::mac::set_transparent_titlebar;
 
 #[command]
 pub async fn wa_window(

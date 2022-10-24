@@ -19,12 +19,14 @@ serde = { version = "1.0", features = ["derive"] }
 tauri = { version = "1.1", features = ["api-all", "devtools", "isolation", "updater"] }
 anyhow = "1.0.65"
 window-shadows = "0.2.0"
+
+[target.'cfg(target_os = "macos")'.dependencies]
 cocoa = "0.24.0"
 
-# https://github.com/tauri-apps/tauri/discussions/3059
-[profile.release.package.wry]
-debug = false
-debug-assertions = false
+# # https://github.com/tauri-apps/tauri/discussions/3059
+# [profile.release.package.wry]
+# debug = false
+# debug-assertions = false
 
 [features]
 # by default Tauri runs in production mode
