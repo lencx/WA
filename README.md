@@ -18,6 +18,7 @@ Make a web page more like a desktop application. Powered by Tauri.
 - Custom scripts: `~/.wa/scripts` is the script root path, please use a relative path, such as `./user.js`
 - Custom Shortcut
 - Spotlight Search
+- Check for updates at startup
 
 ## Preview
 
@@ -25,6 +26,7 @@ Make a web page more like a desktop application. Powered by Tauri.
 ![wa-setting](./assets/wa-setting.png)
 ![wa-new-window](./assets/wa-new-window.png)
 ![wa-script-error](./assets/wa-script-error.png)
+![wa-updater](./assets/wa-updater-1.png)
 
 ## Sponsor
 
