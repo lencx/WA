@@ -7,6 +7,7 @@ mod utils;
 mod wa;
 
 fn main() {
+    let content = tauri::generate_context!();
     tauri::Builder::default()
         .setup(wa::setup::init)
         .invoke_handler(tauri::generate_handler![
@@ -15,6 +16,8 @@ fn main() {
             wa::cmd::setting_window,
             wa::cmd::open_file,
         ])
-        .run(tauri::generate_context!())
+        .menu(wa::menu::init(&content))
+        .on_menu_event(wa::menu::handler)
+        .run(content)
         .expect("error while running WA+ application");
 }

@@ -43,7 +43,7 @@
     "bundle": {
       "active": true,
       "category": "DeveloperTool",
-      "copyright": "lencx",
+      "copyright": "Copyright © 2022 lencx. All rights reserved.",
       "deb": {
         "depends": []
       },
@@ -84,7 +84,8 @@
         "title": "WA+",
         "width": 800,
         "label": "main",
-        "url": "index.html"
+        "url": "index.html",
+        "theme": "Dark"
       }
     ]
   }
