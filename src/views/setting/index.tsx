@@ -8,7 +8,8 @@ import useInit from '@/hooks/useInit';
 import GoBack from '@/components/GoBack';
 import Editor from '@/components/Editor';
 // import ScriptIcon from '@/icons/Script';
-import { SETTING_DATA, settingPath, readSetting, writeSetting } from '@/utils';
+import { settingPath, readSetting, writeSetting } from '@/utils';
+import SETTING_DATA from '@/../src-tauri/src/wa/wa.json';
 import './index.scss';
 
 const SETTING_DATA_STRING = JSON.stringify(SETTING_DATA, null, 4);

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
 import useInit from '@/hooks/useInit';
-import { SETTING_DATA, readSetting } from '@/utils';
+import { readSetting } from '@/utils';
+import SETTING_DATA from '@/../src-tauri/src/wa/wa.json';
 
 export default function useSetting(callback?: (data: any) => void, isInit = true) {
   const [data, setData] = useState<any>();

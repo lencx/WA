@@ -1,4 +1,4 @@
-import { SETTING_DATA } from '@/utils';
+import SETTING_DATA from '@/../src-tauri/src/wa/wa.json';
 import './index.scss';
 
 export default function WaTip() {
