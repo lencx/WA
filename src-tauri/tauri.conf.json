@@ -84,8 +84,7 @@
         "title": "WA+",
         "width": 800,
         "label": "main",
-        "url": "index.html",
-        "theme": "Dark"
+        "url": "index.html"
       }
     ]
   }

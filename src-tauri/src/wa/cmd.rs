@@ -1,12 +1,10 @@
 use std::{fs, process::Command};
-use tauri::WindowEvent;
-use tauri::{api::dialog, command, Manager};
+use tauri::{api::dialog, command, Manager, WindowEvent};
 use window_shadows::set_shadow;
-
-use crate::utils;
 
 #[cfg(target_os = "macos")]
 use crate::wa::mac::set_transparent_titlebar;
+use crate::{utils, wa::conf};
 
 #[command]
 pub async fn wa_window(
@@ -17,7 +15,7 @@ pub async fn wa_window(
     script: Option<String>,
 ) {
     // window.open not working: https://github.com/tauri-apps/wry/issues/649
-    let mut user_script = include_str!("wa.js").to_string();
+    let mut user_script = conf::WA_SCRIPT.to_string();
     if !script.is_none() && !script.as_ref().unwrap().is_empty() {
         let script = utils::wa_path(&script.unwrap());
         let script_path = script.clone().to_string_lossy().to_string();
@@ -90,7 +88,7 @@ pub fn setting_window(app: tauri::AppHandle) {
     let win = app.get_window("setting");
     if win.is_none() {
         std::thread::spawn(move || {
-            let _setting_win = tauri::WindowBuilder::new(
+            tauri::WindowBuilder::new(
                 &app,
                 "setting",
                 tauri::WindowUrl::App("/setting?mode=shortcut".parse().unwrap()),
@@ -102,7 +100,10 @@ pub fn setting_window(app: tauri::AppHandle) {
             .unwrap()
             .on_window_event(move |event| match event {
                 WindowEvent::Destroyed { .. } => {
-                    let _ = app.get_window("main").unwrap().emit("reload", "setting");
+                    app.get_window("main")
+                        .unwrap()
+                        .emit("WA_EVENT", "SETTING_RELOAD")
+                        .unwrap();
                 }
                 _ => (),
             });

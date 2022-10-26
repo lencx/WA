@@ -1,5 +1,7 @@
 use tauri::utils::assets::EmbeddedAssets;
-use tauri::{AboutMetadata, Context, CustomMenuItem, Menu, MenuItem, Submenu, WindowMenuEvent};
+use tauri::{
+    AboutMetadata, Context, CustomMenuItem, Menu, MenuItem, Submenu, WindowMenuEvent,
+};
 
 pub fn init(context: &Context<EmbeddedAssets>) -> Menu {
     let name = &context.package_info().name;
@@ -10,14 +12,15 @@ pub fn init(context: &Context<EmbeddedAssets>) -> Menu {
             .add_native_item(MenuItem::Separator)
             .add_item(
                 CustomMenuItem::new("preferences".to_string(), "Preferences...")
-                .accelerator("CmdOrCtrl+,".to_string()),
+                    .accelerator("CmdOrCtrl+,".to_string()),
             )
             .add_native_item(MenuItem::Separator)
             .add_native_item(MenuItem::Hide)
             .add_native_item(MenuItem::HideOthers)
             .add_native_item(MenuItem::ShowAll)
             .add_native_item(MenuItem::Separator)
-            .add_native_item(MenuItem::Quit));
+            .add_native_item(MenuItem::Quit),
+    );
 
     let help_menu = Submenu::new(
         "Help",
@@ -30,12 +33,11 @@ pub fn init(context: &Context<EmbeddedAssets>) -> Menu {
     Menu::new().add_submenu(app_menu).add_submenu(help_menu)
 }
 
-pub fn handler(event: WindowMenuEvent) {
+pub fn handler(event: WindowMenuEvent<tauri::Wry>) {
     let win = Some(event.window()).unwrap();
-    dbg!(&event);
     match event.menu_item_id() {
         "preferences" => {
-            dbg!("Preferences");
+            win.emit("WA_EVENT", "MENU_SETTING").unwrap();
         }
         "dev_tools" => {
             win.open_devtools();
