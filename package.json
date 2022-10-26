@@ -13,12 +13,14 @@
     "fix:linux": "node scripts/build.linux.mjs"
   },
   "dependencies": {
+    "@floating-ui/react-dom-interactions": "^0.10.2",
     "@monaco-editor/react": "^4.4.6",
     "@tauri-apps/api": "^1.1.0",
     "clsx": "^1.2.1",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-merge-refs": "^2.0.1",
     "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
