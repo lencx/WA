@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { invoke } from '@tauri-apps/api/tauri';
 import { WebviewWindow } from '@tauri-apps/api/window';
+import { useRecoilValue } from 'recoil';
 
-import useSetting from '@/hooks/useSetting';
+import { waSettingData } from '@/hooks/useWA';
 import AppItem, { type AppData } from '@/components/AppItem';
 import './index.scss';
 
 export default function Search() {
-  const data = useSetting();
+  const settingJSON = useRecoilValue(waSettingData);
   const [searchData, setSearchData] = useState<AppData & { type: string } | null>(null);
-  const appList = data?.app?.reduce((a: any, b: any) => {
+  const appList = settingJSON?.app?.reduce((a: any, b: any) => {
     const items = b.items.map((i: any) => ({ ...i, type: b.type }));
     return [...a, ...items];
   }, []);

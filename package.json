@@ -21,7 +21,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-merge-refs": "^2.0.1",
-    "react-router-dom": "^6.4.2"
+    "react-router-dom": "^6.4.2",
+    "recoil": "^0.7.6"
   },
   "devDependencies": {
     "@actions/github": "^5.1.1",

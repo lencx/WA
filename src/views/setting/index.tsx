@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 import { homeDir, join } from '@tauri-apps/api/path';
 import { invoke } from '@tauri-apps/api/tauri';
 import debounce from 'lodash/debounce';
 
 import useInit from '@/hooks/useInit';
+import { waSettingFile } from '@/hooks/useWA';
 import GoBack from '@/components/GoBack';
 import Editor from '@/components/Editor';
 // import ScriptIcon from '@/icons/Script';
@@ -19,11 +21,13 @@ export default function SettingView() {
   const [params] = useSearchParams();
   const [content, setContent] = useState('');
   const [filePath, setFilePath] = useState('');
+  const [, setSetting] = useRecoilState(waSettingFile);
   const isShortcut = params.get('mode') === 'shortcut';
 
   const writeContent = async (val?: string) => {
     const _data = val || SETTING_DATA_STRING;
     writeSetting(_data);
+    setSetting(_data);
   };
 
   const handleEdit = debounce(writeContent, 500);

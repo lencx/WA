@@ -15,7 +15,7 @@ pub async fn wa_window(
     script: Option<String>,
 ) {
     // window.open not working: https://github.com/tauri-apps/wry/issues/649
-    let mut user_script = conf::WA_SCRIPT.to_string();
+    let mut user_script = conf::WA_INIT_SCRIPT.to_string();
     if !script.is_none() && !script.as_ref().unwrap().is_empty() {
         let script = utils::wa_path(&script.unwrap());
         let script_path = script.clone().to_string_lossy().to_string();
@@ -93,13 +93,15 @@ pub fn setting_window(app: tauri::AppHandle) {
                 "setting",
                 tauri::WindowUrl::App("/setting?mode=shortcut".parse().unwrap()),
             )
-            .maximized(true)
+            .inner_size(800.0, 600.0)
+            .center()
             .title("WA+ Setting")
             .focus()
             .build()
             .unwrap()
             .on_window_event(move |event| match event {
                 WindowEvent::Destroyed { .. } => {
+                    utils::setting_init(app.clone());
                     app.get_window("main")
                         .unwrap()
                         .emit("WA_EVENT", "SETTING_RELOAD")

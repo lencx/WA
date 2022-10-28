@@ -23,7 +23,8 @@ export default function WaTip() {
       </div>
       <div className="feat">
         <h2>Custom Setting (Default):</h2>
-        <p>Click the ⚙️ icon in the upper right corner to enter edit mode. Edits will be automatically saved in the local <code>~/.wa/setting.json</code>. If the configuration does not take effect, please restart or reload the application.</p>
+        <p><code>CmdOrCtrl + ,</code> or <code>{`WA+ -> Menu -> Preferences`}</code></p>
+        <p>Edits will be automatically saved in the local <code>~/.wa/setting.json</code>. If the configuration does not take effect, please restart or reload the application.</p>
         <p>This page is displayed if json parsing fails; if json is not set or empty, default data is used.</p>
         <ul>
           <li><code>title</code>: Window Name</li>

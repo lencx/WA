@@ -10,10 +10,10 @@ pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>
     if !utils::exists(setting_file) {
         // create setting.json
         utils::create_file(setting_file).unwrap();
-        std::fs::write(setting_file, conf::WA_SETTING_JSON).unwrap();
+        std::fs::write(setting_file, conf::WA_INIT_SETTING).unwrap();
 
         // init setting
-        let setting_json = utils::read_json(conf::WA_SETTING_JSON).unwrap();
+        let setting_json = utils::read_json(conf::WA_INIT_SETTING).unwrap();
         // TODO: theme: https://github.com/tauri-apps/tauri/issues/5279
         // let theme = &setting_json["theme"].as_str().unwrap();
         let title = &setting_json["title"].as_str().unwrap();
@@ -31,6 +31,8 @@ pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>
                 })
                 .unwrap();
         }
+    } else {
+        utils::setting_init(wa);
     }
 
     Ok(())

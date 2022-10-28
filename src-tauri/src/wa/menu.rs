@@ -1,7 +1,5 @@
 use tauri::utils::assets::EmbeddedAssets;
-use tauri::{
-    AboutMetadata, Context, CustomMenuItem, Menu, MenuItem, Submenu, WindowMenuEvent,
-};
+use tauri::{AboutMetadata, Context, CustomMenuItem, Menu, MenuItem, Submenu, WindowMenuEvent};
 
 pub fn init(context: &Context<EmbeddedAssets>) -> Menu {
     let name = &context.package_info().name;

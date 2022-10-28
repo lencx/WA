@@ -1,46 +1,20 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { WebviewWindow } from '@tauri-apps/api/window';
+import { useRecoilValue } from 'recoil';
 
-import useSetting from '@/hooks/useSetting';
+import { waSettingData } from '@/hooks/useWA';
 import WaTip from '@/components/WaTip';
-import SettingIcon from '@/icons/Setting';
+import Error from '@/components/Error';
 import AppItem, { type AppData } from '@/components/AppItem';
 import './index.scss';
-import useInit from '@/hooks/useInit';
 
 export default function DashboardView() {
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-  const [content, setContent] = useState<Record<string, any>>();
-  const hasApps = content?.app?.length > 0;
-
-  useSetting(async (data) => {
-    setContent(data);
-    WebviewWindow.getByLabel('main')?.setTitle(data?.title || 'WA+');
-    setLoading(false);
-  }, false)
-
-  useInit(async () => {
-    WebviewWindow.getByLabel('main')?.listen('reload', () => {
-      window.location.reload();
-    })
-  });
-
-  if (loading) {
-    return (
-      <div className="wa-loading">
-        <span>loading...</span>
-      </div>
-    )
-  }
-
+  const settingJSON = useRecoilValue(waSettingData);
+  const hasApps = settingJSON?.app?.length > 0;
   return (
     <div className="dashboard">
-      <SettingIcon className="wa-setting" onClick={() => navigate('/setting')} />
+      <Error type="WA+ Setting" data={settingJSON} />
       {!hasApps
         ? <WaTip />
-        : (content?.app?.map((group: any) => {
+        : (settingJSON?.app?.map((group: any) => {
             if (!group?.type) return null;
             return (
               <div className="wa-app" key={group.type}>

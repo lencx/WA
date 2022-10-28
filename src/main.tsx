@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { WebviewWindow } from '@tauri-apps/api/window';
+import { BrowserRouter, useLocation } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import { invoke } from '@tauri-apps/api/tauri';
 import { listen } from '@tauri-apps/api/event';
 
 import useHotkey from '@/hooks/useHotkey';
-import useSetting from '@/hooks/useSetting';
 import useInit from '@/hooks/useInit';
-import { waSettingShortcut } from '@/utils';
 import Routes from './routes';
 import './style.css';
 
 const App = () => {
   useHotkey();
+
+  const location = useLocation();
+  const pathname = location.pathname;
 
   useInit(() => {
     listen("WA_EVENT", (e) => {
@@ -36,23 +37,22 @@ const App = () => {
     })
   })
 
-  useSetting(async (data) => {
-    const title = data?.title || 'WA+';
-    WebviewWindow.getByLabel('main')?.setTitle(title);
 
-    waSettingShortcut(() => {
-      invoke('setting_window');
-    });
-  });
-
-  return null;
+  return (
+    <Suspense fallback={pathname !== '/search'
+      ? (<div className="wa-loading"><span>loading...</span></div>)
+      : null}>
+      <Routes />
+    </Suspense>
+  );
 }
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
-      <Routes />
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
     </BrowserRouter>
   </React.StrictMode>
 );

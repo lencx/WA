@@ -1,0 +1,12 @@
+.wa-error {
+  font-size: 12px;
+  background-color: var(--theme-red);
+  color: #fff;
+  padding: 10px;
+  font-weight: 500;
+
+  .type {
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+}

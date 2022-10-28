@@ -22,3 +22,13 @@ body,
   display: inline-block;
   line-height: 0;
 }
+
+.wa-loading {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
