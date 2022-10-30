@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 export default function useHotkey() {
+  const isInit = useRef(true);
   useEffect(() => {
     const waKey = (e: KeyboardEvent, key: string, callback: Function) => {
       if ((e.key === key && e.metaKey) || (e.key === key && e.ctrlKey)) {
@@ -14,7 +15,10 @@ export default function useHotkey() {
       waKey(e, '[', () => window.history.go(-1));
       waKey(e, ']', () => window.history.go(1));
     }
-    document.addEventListener('keyup', handle);
+    if (isInit.current) {
+      isInit.current = false;
+      document.addEventListener('keyup', handle);
+    }
     return () => document.removeEventListener('keyup', handle);
   }, []);
 }

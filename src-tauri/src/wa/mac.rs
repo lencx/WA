@@ -2,7 +2,7 @@ use cocoa::appkit::{NSWindow, NSWindowStyleMask, NSWindowTitleVisibility};
 use tauri::Window;
 
 #[cfg(target_os = "macos")]
-pub fn set_transparent_titlebar(window: Window, title_transparent: bool, remove_tool_bar: bool) {
+pub fn set_transparent_titlebar(window: &Window, title_transparent: bool, remove_tool_bar: bool) {
     unsafe {
         let id = window.ns_window().unwrap() as cocoa::base::id;
         NSWindow::setTitlebarAppearsTransparent_(id, cocoa::base::YES);

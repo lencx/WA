@@ -1,12 +1,37 @@
-.wa-search {
+.search-item {
+  margin: 5px 8px;
+  padding: 0 5px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  font-weight: 500;
   display: flex;
   align-items: center;
 
-  input {
-    all: unset;
-    height: 60px;
-    width: 320px;
-    padding: 0 10px;
-    cursor: default;
+  &.active {
+    background-color: var(--theme-active);
+    border-radius: 5px;
+    color: #fff;
+  }
+
+  .item-ico {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+}
+
+.search-data-ico {
+  width: 30px;
+  height: 30px;
+  user-select: none;
+
+  img {
+    width: 100%;
+  }
+
+  svg {
+    width: 100% !important;
+    height: 100% !important;
   }
 }

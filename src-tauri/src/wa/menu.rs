@@ -20,6 +20,18 @@ pub fn init(context: &Context<EmbeddedAssets>) -> Menu {
             .add_native_item(MenuItem::Quit),
     );
 
+    let edit_menu = Submenu::new(
+        "Edit",
+        Menu::new()
+            .add_native_item(MenuItem::Undo)
+            .add_native_item(MenuItem::Redo)
+            .add_native_item(MenuItem::Separator)
+            .add_native_item(MenuItem::Cut)
+            .add_native_item(MenuItem::Copy)
+            .add_native_item(MenuItem::Paste)
+            .add_native_item(MenuItem::SelectAll),
+    );
+
     let help_menu = Submenu::new(
         "Help",
         Menu::new().add_item(
@@ -28,7 +40,10 @@ pub fn init(context: &Context<EmbeddedAssets>) -> Menu {
         ),
     );
 
-    Menu::new().add_submenu(app_menu).add_submenu(help_menu)
+    Menu::new()
+        .add_submenu(app_menu)
+        .add_submenu(edit_menu)
+        .add_submenu(help_menu)
 }
 
 pub fn handler(event: WindowMenuEvent<tauri::Wry>) {

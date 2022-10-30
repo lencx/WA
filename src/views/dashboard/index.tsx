@@ -23,7 +23,7 @@ export default function DashboardView() {
                   {group?.items?.map((app: AppData) => (
                     <AppItem
                       key={app.name}
-                      app={app}
+                      data={app}
                       type={group.type}
                     />
                   ))}

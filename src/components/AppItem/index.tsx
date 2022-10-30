@@ -14,31 +14,31 @@ export interface AppData {
 
 interface AppItemProps {
   type: string;
-  app: AppData;
+  data: AppData;
   size?: 'lg' | 'sm';
   disabled?: boolean;
 }
 
-const AppItem: FC<AppItemProps> = ({ type, app, size = 'lg', disabled = false }) => {
-  const isSvg = /<\s*svg[^>]*>(.*?)<\/\s*svg>/g.test(app?.icon);
+const AppItem: FC<AppItemProps> = ({ type, data, size = 'lg', disabled = false }) => {
+  const isSvg = /<\s*svg[^>]*>(.*?)<\/\s*svg>/g.test(data?.icon);
 
   const handleWaWindow = async () => {
     if (disabled) return;
-    if (!app.url) return;
+    if (!data.url) return;
     await invoke('wa_window', {
       label: Date.now().toString(16),
-      title: `${type} / ${app.name}`,
-      url: app.url,
-      script: app?.script,
+      title: `${type} / ${data.name}`,
+      url: data.url,
+      script: data?.script,
     });
   };
 
   return (
-    <div className={clsx('wa-app-item', size)} onClick={handleWaWindow} title={app.name}>
+    <div className={clsx('wa-app-item', size)} onClick={handleWaWindow} title={data.name}>
       {isSvg
-        ? <i className="app-icon" dangerouslySetInnerHTML={{ __html: app.icon }} />
-        : <img className="app-icon" src={app.icon ? app.icon : waIcon} /> }
-      <div className="app-name">{app.name}</div>
+        ? <i className="app-icon" dangerouslySetInnerHTML={{ __html: data.icon }} />
+        : <img className="app-icon" src={data.icon ? data.icon : waIcon} /> }
+      <div className="app-name">{data.name}</div>
     </div>
   )
 }

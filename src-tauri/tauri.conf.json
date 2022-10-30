@@ -11,6 +11,7 @@
     "version": "../package.json"
   },
   "tauri": {
+    "macOSPrivateApi": true,
     "updater": {
       "active": true,
       "dialog": true,

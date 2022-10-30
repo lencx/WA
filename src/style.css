@@ -7,6 +7,7 @@ body,
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: transparent;
 }
 
 :root {
@@ -15,6 +16,8 @@ body,
   --theme-yellow: #E8D388;
   --theme-gray: #999;
   --theme-icon: var(--theme-blue);
+
+  --theme-active: rgb(99, 155, 248);
 }
 
 .wa-ico {

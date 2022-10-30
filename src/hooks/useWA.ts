@@ -1,4 +1,4 @@
-import { atom, selector, useRecoilState, useRecoilValue } from 'recoil';
+import { atom, selector } from 'recoil';
 
 import SETTING_DATA from '@/../src-tauri/src/wa/wa.json';
 import { readSetting } from '@/utils';
@@ -19,8 +19,3 @@ export const waSettingData = selector({
     }
   },
 });
-
-// export const useSettingData = () => {
-//   const [, setSettingJSON] = useRecoilState(waSettingFile);
-//   return { settingJSON: '', setSettingJSON };
-// }
