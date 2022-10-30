@@ -1,11 +1,15 @@
+use crate::{utils, wa::conf};
 use std::{fs, process::Command};
 use tauri::{api::dialog, command, Manager, WindowEvent};
+
+#[cfg(not(target_os = "linux"))]
 use window_shadows::set_shadow;
+
+#[cfg(not(target_os = "linux"))]
 use window_vibrancy::{self, NSVisualEffectMaterial};
 
 #[cfg(target_os = "macos")]
 use crate::wa::mac::set_transparent_titlebar;
-use crate::{utils, wa::conf};
 
 #[command]
 pub async fn wa_window(
@@ -85,23 +89,24 @@ pub fn search_window(app: tauri::AppHandle) {
             _ => (),
         });
 
-        if cfg!(target_os = "macos") {
-            set_transparent_titlebar(&search_win, true, true);
-            window_vibrancy::apply_vibrancy(
-                &search_win,
-                NSVisualEffectMaterial::FullScreenUI,
-                None,
-                None,
-            )
-            .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
-        } else {
-            #[cfg(not(target_os = "linux"))]
-            set_shadow(&search_win, true).expect("Unsupported platform!");
+        #[cfg(target_os = "macos")]
+        set_transparent_titlebar(&search_win, true, true);
 
-            #[cfg(target_os = "windows")]
-            window_vibrancy::apply_blur(&search_win, Some((18, 18, 18, 125)))
-                .expect("Unsupported platform! 'apply_blur' is only supported on Windows");
-        }
+        #[cfg(target_os = "macos")]
+        window_vibrancy::apply_vibrancy(
+            &search_win,
+            NSVisualEffectMaterial::FullScreenUI,
+            None,
+            None,
+        )
+        .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
+
+        #[cfg(not(target_os = "linux"))]
+        set_shadow(&search_win, true).expect("Unsupported platform!");
+
+        #[cfg(target_os = "windows")]
+        window_vibrancy::apply_blur(&search_win, Some((18, 18, 18, 125)))
+            .expect("Unsupported platform! 'apply_blur' is only supported on Windows");
     }
 }
 
