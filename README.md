@@ -3,9 +3,10 @@
   <h2 align="center">WA+</h2>
 </p>
 
-> WA+ = W(eb) + A(pp) + more...
+> WA+ = W(eb) + A(pp) + more...\
+> 🤩 哇，无限可能！
 
-Make a web page more like a desktop application. Powered by Tauri.
+Making a web page more like a desktop application is just the beginning, the possibilities are unlimited, up to your imagination!
 
 ## Install
 

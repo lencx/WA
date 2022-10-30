@@ -4,6 +4,10 @@ import './index.scss';
 export default function WaTip() {
   return (
     <div className="wa-tip">
+      <div className="about-wa">
+        <p className="wa">🤩 WA+ = W(eb) + A(pp) + more... <code>哇，无限可能！</code></p>
+        <p className="desc">Making a web page more like a desktop application is just the beginning, the possibilities are unlimited, up to your imagination!</p>
+      </div>
       <div className="feat">
         <h2>Shortcut</h2>
         <div className="shortcut-wa">
