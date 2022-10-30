@@ -9,7 +9,8 @@ Make a web page more like a desktop application. Powered by Tauri.
 
 ## Install
 
-[📦 Download WA+](https://github.com/lencx/WA/releases)
+- [📦 Download WA+](https://github.com/lencx/WA/releases)
+- [⚙️ WA+ Setting](./WA.json)
 
 ## Feature
 
@@ -22,7 +23,7 @@ Make a web page more like a desktop application. Powered by Tauri.
 
 ## Preview
 
-<img width="49.5%" alt="wa-dashboard" src="./assets/wa-dashboard.png" /> <img width="49.5%" alt="wa-setting" src="./assets/wa-setting.png" /> <img width="49.5%" alt="wa-new-window" src="./assets/wa-new-window.png" /> <img width="49.5%" alt="wa-script-error" src="./assets/wa-script-error.png" /> <img width="49.5%" alt="wa-updater" src="./assets/wa-updater-1.png" /> <img width="49.5%" alt="wa-updater" src="./assets/wa-updater-2.png" />
+<img width="48%" alt="wa-dashboard" src="./assets/wa-dashboard.png" /> <img width="48%" alt="wa-setting" src="./assets/wa-setting.png" /> <img width="48%" alt="wa-new-window" src="./assets/wa-new-window.png" /> <img width="48%" alt="wa-script-error" src="./assets/wa-script-error.png" /> <img width="48%" alt="wa-updater" src="./assets/wa-updater-1.png" /> <img width="48%" alt="wa-updater" src="./assets/wa-updater-2.png" />
 
 ## Sponsor
 

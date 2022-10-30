@@ -79,7 +79,7 @@ pub fn search_window(app: tauri::AppHandle) {
         search_win.on_window_event(move |event| match event {
             WindowEvent::Focused(is_focused) => {
                 if !is_focused {
-                    // app.get_window("search").unwrap().close().unwrap();
+                    app.get_window("search").unwrap().close().unwrap();
                 }
             }
             _ => (),

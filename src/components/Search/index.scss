@@ -7,6 +7,7 @@
   font-weight: 500;
   display: flex;
   align-items: center;
+  cursor: default;
 
   &.active {
     background-color: var(--theme-active);
@@ -25,12 +26,15 @@
   width: 30px;
   height: 30px;
   user-select: none;
+  display: flex;
+  align-items: center;
 
   img {
     width: 100%;
   }
 
-  svg {
+  i.app-icon {
+    display: inline-block;
     width: 100% !important;
     height: 100% !important;
   }

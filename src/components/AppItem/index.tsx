@@ -12,6 +12,8 @@ export interface AppData {
   script?: string;
 }
 
+export type SearchAppData = AppData & { type: string };
+
 interface AppItemProps {
   type: string;
   data: AppData;

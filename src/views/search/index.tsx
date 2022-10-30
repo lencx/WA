@@ -6,7 +6,7 @@ import { LogicalSize, WebviewWindow } from '@tauri-apps/api/window';
 
 import { waSettingData } from '@/hooks/useWA';
 import { SearchItem, SearchIcon } from '@/components/Search';
-import type { AppData } from '@/components/AppItem';
+import type { AppData, SearchAppData } from '@/components/AppItem';
 import './index.scss';
 
 export default function SearchView() {
@@ -15,7 +15,7 @@ export default function SearchView() {
   const [index, setIndex] = useState(-1);
   const [height, setHeight] = useState(-1);
   const searchWindow = WebviewWindow.getByLabel('search');
-  const [searchList, setSearchList] = useState<Array<AppData & { type: string }>>([]);
+  const [searchList, setSearchList] = useState<Array<SearchAppData>>([]);
   const appList = settingJSON?.app?.reduce((a: any, b: any) => {
     const items = b.items.map((i: any) => ({ ...i, type: b.type }));
     return [...a, ...items];
@@ -66,6 +66,9 @@ export default function SearchView() {
   }, [len, index]);
 
   const handleKeyDown = async (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      event.preventDefault();
+    }
     if (event.key === 'Enter') {
       if (len) {
         await invoke('wa_window', {
@@ -102,6 +105,17 @@ export default function SearchView() {
     setSearchWindow(60);
   };
 
+  const handleOpen = (data: SearchAppData, index: number) => {
+    setIndex(index);
+    setTimeout(async () => {
+      await invoke('wa_window', {
+        label: Date.now().toString(16),
+        title: `${data.type} / ${data.name}`,
+        url: data.url,
+      });
+    }, 300);
+  };
+
   return (
     <div className="wa-search">
       <div className={clsx('search-input', { hasData: len })} data-tauri-drag-region>
@@ -122,7 +136,9 @@ export default function SearchView() {
         <div className="search-data" ref={searchEl} style={{ height: height - 16 }}>
           <div className="search-scroll">
             {Array.from({ length: len }).map((_, i) => {
-              return <SearchItem isActive={i === index} data={searchList[i]} />
+              return (
+                <SearchItem isActive={i === index} data={searchList[i]} onClick={v => handleOpen(v, i)} />
+              )
             })}
           </div>
         </div>
