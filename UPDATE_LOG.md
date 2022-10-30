@@ -1,5 +1,10 @@
 # UPDATE LOG
 
+## v0.1.5
+
+- feat: search result
+- chore: optimization
+
 ## v0.1.4
 
 - feat: spotlight search

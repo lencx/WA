@@ -26,7 +26,7 @@ export default function updatelog(tag, type = 'updater') {
       }
     }
     if (_tag) {
-      tagMap[_tag].push(line);
+      tagMap[_tag].push(line.trim());
     }
     if (reTag.test(content[index + 1])) {
       _tag = null;
