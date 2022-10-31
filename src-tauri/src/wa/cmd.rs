@@ -37,12 +37,17 @@ pub async fn wa_window(
         let _window = tauri::WindowBuilder::new(
             &app,
             label,
-            tauri::WindowUrl::External(url.parse().unwrap()),
+            tauri::WindowUrl::App(url.parse().unwrap()),
         )
         .initialization_script(&user_script)
         .title(title)
         .build()
         .unwrap();
+
+        // TODO: window - menu event
+        // window.on_menu_event(move|event| {
+        //     dbg!(event);
+        // });
     });
 }
 
@@ -136,6 +141,25 @@ pub fn setting_window(app: tauri::AppHandle) {
                 }
                 _ => (),
             });
+        });
+    }
+}
+
+#[command]
+pub fn new_window(app: tauri::AppHandle, label: String, title: String, url: String) {
+    let win = app.get_window(&label);
+    if win.is_none() {
+        std::thread::spawn(move || {
+            tauri::WindowBuilder::new(
+                &app,
+                label,
+                tauri::WindowUrl::App(url.parse().unwrap()),
+            )
+            .inner_size(800.0, 600.0)
+            .center()
+            .title(title)
+            .build()
+            .unwrap();
         });
     }
 }

@@ -1,6 +1,6 @@
 use tauri::{App, GlobalShortcutManager, Manager};
 
-use crate::{utils, wa::conf};
+use crate::{utils, wa::conf, wa::cmd};
 
 pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>> {
     // check `~/.wa/setting.json`
@@ -21,13 +21,17 @@ pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>
         let mut shortcut = app.global_shortcut_manager();
         let is_search_key = shortcut.is_registered(search_shortcut);
         let main_window = wa.get_window("main").unwrap();
-
         main_window.set_title(title).unwrap();
+        let app = main_window.app_handle();
+
+        std::thread::spawn(move|| {
+            cmd::new_window(app, "help".to_string(), "WA+ Help".to_string(), "/help".to_string())
+        });
 
         if !is_search_key.unwrap() {
             shortcut
-                .register(search_shortcut, move || {
-                    main_window.emit("WA_EVENT", "SEARCH").unwrap();
+                .register(search_shortcut, move|| {
+                    cmd::search_window(main_window.app_handle());
                 })
                 .unwrap();
         }

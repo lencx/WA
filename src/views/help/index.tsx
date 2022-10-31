@@ -1,9 +1,16 @@
+import { WebviewWindow } from '@tauri-apps/api/window';
+
 import SETTING_DATA from '@/../src-tauri/src/wa/wa.json';
 import './index.scss';
 
-export default function WaTip() {
+export default function HelpView() {
+  const handleStart = () => {
+    WebviewWindow.getByLabel('help')?.close();
+    WebviewWindow.getByLabel('main')?.show();
+  };
+
   return (
-    <div className="wa-tip">
+    <div className="wa-help">
       <div className="about-wa">
         <p className="wa">🤩 WA+ = W(eb) + A(pp) + more... <code>哇，无限可能！</code></p>
         <p className="desc">Making a web page more like a desktop application is just the beginning, the possibilities are unlimited, up to your imagination!</p>
@@ -13,11 +20,11 @@ export default function WaTip() {
         <div className="shortcut-wa">
           <h3>WA+ Shortcut</h3>
           <div className="item"><code>CmdOrCtrl + ,</code>: WA+ setting</div>
-          <div className="item"><code>CmdOrCtrl + [</code>: Previous page</div>
-          <div className="item"><code>CmdOrCtrl + ]</code>: Next page</div>
-          <div className="item"><code>CmdOrCtrl + ↑</code>: Scroll to top of page</div>
-          <div className="item"><code>CmdOrCtrl + ↓</code>: Scroll to bottom of page</div>
-          <div className="item"><code>CmdOrCtrl + r</code>: Refresh Page</div>
+          <div className="item"><code>CmdOrCtrl + [</code>: Go Back</div>
+          <div className="item"><code>CmdOrCtrl + ]</code>: Go Forward</div>
+          <div className="item"><code>CmdOrCtrl + ↑</code>: Scroll to Top of Screen</div>
+          <div className="item"><code>CmdOrCtrl + ↓</code>: Scroll to Bottom of Screen</div>
+          <div className="item"><code>CmdOrCtrl + r</code>: Refresh the Screen</div>
         </div>
         <div className="shortcut-global">
           <h3>Global Shortcut:</h3>
@@ -44,6 +51,7 @@ export default function WaTip() {
         </ul>
         <div className="item"><pre>{JSON.stringify(SETTING_DATA, null, 2)}</pre></div>
       </div>
+      <div className="get-start" onClick={handleStart}><button>Get started with WA+</button></div>
     </div>
   )
 }

@@ -1,7 +1,7 @@
-.wa-tip {
+.wa-help {
   font-size: 12px;
   line-height: 20px;
-  margin-top: 30px;
+  margin: 30px;
 
   .about-wa {
     margin: 0 0 20px;
@@ -84,5 +84,28 @@
     background-color: #fea;
     padding: 5px;
     overflow-y: auto;
+  }
+
+  .get-start {
+    text-align: center;
+    margin: 20px;
+
+    button {
+      all: unset;
+      padding: 24px;
+      font-size: 30px;
+      background-color: var(--theme-blue);
+      color: #fff;
+      border-radius: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: all 300ms ease;
+      text-shadow: 0 0 3px rgba(0,0,0,0.3);
+
+      &:hover {
+        transition: all 300ms ease;
+        box-shadow: 0 0 10px rgba(0,0,0,0.7);
+      }
+    }
   }
 }

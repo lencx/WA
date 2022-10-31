@@ -6,6 +6,7 @@ import DashboardView from '@/views/dashboard';
 import SettingView from '@/views/setting';
 import SearchView from '@/views/search';
 import ScriptsView from '@/views/script';
+import HelpView from '@/views/help';
 
 const routes: RouteObject[] = [
   {
@@ -19,6 +20,10 @@ const routes: RouteObject[] = [
   {
     path: '/search',
     element: <SearchView />,
+  },
+  {
+    path: '/help',
+    element: <HelpView />,
   },
   {
     path: '/script',

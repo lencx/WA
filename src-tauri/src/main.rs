@@ -12,8 +12,6 @@ fn main() {
         .setup(wa::setup::init)
         .invoke_handler(tauri::generate_handler![
             wa::cmd::wa_window,
-            wa::cmd::search_window,
-            wa::cmd::setting_window,
             wa::cmd::open_file,
         ])
         .menu(wa::menu::init(&content))

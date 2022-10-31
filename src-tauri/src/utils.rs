@@ -4,7 +4,7 @@ use std::fs::{self, File};
 use std::path::{Path, PathBuf};
 use tauri::{api::path as TauriPath, GlobalShortcutManager, Manager};
 
-use crate::wa::conf::{WA_ROOT, WA_SETTING};
+use crate::wa::{cmd::search_window, conf::{WA_ROOT, WA_SETTING}};
 
 pub fn exists(path: &Path) -> bool {
     Path::new(path).exists()
@@ -48,7 +48,7 @@ pub fn setting_init(app: tauri::AppHandle) {
         if !is_search_key.unwrap() {
             shortcut
                 .register(_search_shortcut, move || {
-                    main_window.emit("WA_EVENT", "SEARCH").unwrap();
+                    search_window(main_window.app_handle());
                 })
                 .unwrap();
         }

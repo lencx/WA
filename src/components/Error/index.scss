@@ -9,4 +9,32 @@
     margin-bottom: 4px;
     font-weight: bold;
   }
+
+  .shortcut {
+    background-color: #fff;
+    color: #2a2a2a;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 10px;
+
+    code {
+      background: #2a2a2a;
+      color: #fff;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+
+    .name {
+      font-weight: bold;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 30px;
+
+      li {
+        padding: 3px 0;
+      }
+    }
+  }
 }
