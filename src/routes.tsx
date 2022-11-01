@@ -5,7 +5,7 @@ import type { RouteObject } from 'react-router-dom';
 import DashboardView from '@/views/dashboard';
 import SettingView from '@/views/setting';
 import SearchView from '@/views/search';
-import PluginsView from '@/views/plugins';
+import ToolsView from '@/views/tools';
 import ScriptsView from '@/views/script';
 import HelpView from '@/views/help';
 
@@ -15,8 +15,8 @@ const routes: RouteObject[] = [
     element: <DashboardView />,
   },
   {
-    path: '/plugins',
-    element: <PluginsView />,
+    path: '/tools',
+    element: <ToolsView />,
   },
   {
     path: '/setting',

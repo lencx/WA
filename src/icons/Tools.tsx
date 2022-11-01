@@ -13,9 +13,9 @@ interface AppIconProps {
 
 const AppIcon: FC<AppIconProps> = ({ className, color = 'var(--theme-red)', onClick }) => {
   return (
-    <span className={clsx('wa-ico', className)} onClick={onClick} title="Plugins">
+    <span className={clsx('wa-ico', className)} onClick={onClick} title="Tools">
       <svg
-        className="ico-plugin"
+        className="ico-tools"
         width="20"
         height="20"
         viewBox="0 0 1024 1024"

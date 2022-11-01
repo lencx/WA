@@ -1,5 +1,5 @@
 .wa-layout {
-  .wa-side {
+  &-side {
     position: fixed;
     width: 30px;
     height: 100%;
@@ -8,14 +8,29 @@
     background-color: #eee;
     text-align: center;
     padding: 5px 0;
+    z-index: 10;
+
+    .wa-ico {
+      &.setting {
+        position: fixed;
+        bottom: 5px;
+        left: 0;
+      }
+    }
   }
 
-  .wa-content {
+  &-content {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
     padding-left: 30px;
+    overflow-y: auto;
   }
 
   &.shortcut {
-    .wa-content {
+   .wa-layout-content {
       padding-left: 0;
     }
   }

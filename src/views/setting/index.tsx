@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { homeDir, join } from '@tauri-apps/api/path';
@@ -19,11 +19,23 @@ const SETTING_DATA_STRING = JSON.stringify(SETTING_DATA, null, 4);
 
 export default function SettingView() {
   // const navigate = useNavigate();
+  const isInit = useRef(true);
   const [params] = useSearchParams();
   const [content, setContent] = useState('');
   const [filePath, setFilePath] = useState('');
   const [, setSetting] = useRecoilState(waSettingFile);
   const isShortcut = params.get('mode') === 'shortcut';
+
+  useEffect(() => {
+    return () => {
+      if (isShortcut) return;
+      if (!isInit.current) {
+        window.location.reload();
+        return;
+      }
+      isInit.current = false;
+    }
+  }, [])
 
   const writeContent = async (val?: string) => {
     const _data = val || SETTING_DATA_STRING;

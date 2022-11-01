@@ -1,6 +1,7 @@
 .dashboard {
-  .wa-content {
+  .wa-layout-content {
     padding: 10px 10px 10px 40px;
+    height: calc(100% - 20px);
   }
 
   .wa-app {
