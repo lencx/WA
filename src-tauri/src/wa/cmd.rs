@@ -22,7 +22,7 @@ pub async fn wa_window(
     // window.open not working: https://github.com/tauri-apps/wry/issues/649
     let mut user_script = conf::WA_INIT_SCRIPT.to_string();
     if !script.is_none() && !script.as_ref().unwrap().is_empty() {
-        let script = utils::wa_path(&script.unwrap());
+        let script = utils::wa_script_path(&script.unwrap());
         let script_path = script.clone().to_string_lossy().to_string();
         let content = fs::read_to_string(script).unwrap_or_else(|msg| {
             let main_window = app.get_window("main").unwrap();

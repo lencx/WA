@@ -22,6 +22,10 @@ pub fn wa_path(path: &str) -> PathBuf {
     TauriPath::home_dir().unwrap().join(WA_ROOT).join(path)
 }
 
+pub fn wa_script_path(path: &str) -> PathBuf {
+    TauriPath::home_dir().unwrap().join(WA_ROOT).join("scripts").join(path)
+}
+
 pub fn read_json(content: &str) -> serde_json::Result<serde_json::Value> {
     let v: serde_json::Value = serde_json::from_str(content)?;
     Ok(v)
