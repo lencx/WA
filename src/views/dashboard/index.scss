@@ -1,5 +1,14 @@
 .dashboard {
-  padding: 10px;
+  .wa-content {
+    padding: 10px 10px 10px 40px;
+  }
+
+  .wa-app {
+    h3 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+  }
 }
 
 .wa-app-group {

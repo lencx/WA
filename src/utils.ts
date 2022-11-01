@@ -24,16 +24,3 @@ export async function scriptPath() {
 export function tauriLink(path: string) {
   return import.meta.env.DEV ? `http://localhost:3681${path}` : `tauri://localhost${path}`;
 }
-
-export function waSettingShortcut(callback: Function) {
-  document.addEventListener('keyup', function (e) {
-    if ((e.key === ',' && e.metaKey) || (e.key === ',' && e.ctrlKey)) {
-      callback();
-    }
-  })
-}
-
-export const getScrollPosition = (el: any = window) => ({
-  x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
-  y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop,
-});

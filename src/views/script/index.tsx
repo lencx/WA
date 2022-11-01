@@ -3,10 +3,9 @@ import { homeDir, join } from '@tauri-apps/api/path';
 import { invoke } from '@tauri-apps/api/tauri';
 import debounce from 'lodash/debounce';
 
-import useInit from '@/hooks/useInit';
 import GoBack from '@/components/GoBack';
 import Editor from '@/components/Editor';
-import { scriptPath } from '@/utils';
+// import { scriptPath } from '@/utils';
 
 const SCRIPT_DATA_STRING = `// ROOT_PATH: ~/.wa/scripts\n
 (function () {

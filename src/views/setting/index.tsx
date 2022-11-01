@@ -7,8 +7,9 @@ import debounce from 'lodash/debounce';
 
 import useInit from '@/hooks/useInit';
 import { waSettingFile } from '@/hooks/useWA';
-import GoBack from '@/components/GoBack';
+// import GoBack from '@/components/GoBack';
 import Editor from '@/components/Editor';
+import Layout from '@/layouts';
 // import ScriptIcon from '@/icons/Script';
 import { settingPath, readSetting, writeSetting } from '@/utils';
 import SETTING_DATA from '@/../src-tauri/src/wa/wa.json';
@@ -53,9 +54,9 @@ export default function SettingView() {
   // };
 
   return (
-    <div className="setting">
+    <Layout className="setting" type={isShortcut ? 'shortcut-setting' : 'setting'}>
       <div className="setting-taskbar">
-        {!isShortcut && <GoBack to="/" />}
+        {/* {!isShortcut && <GoBack to="/" />} */}
         <div className="file" onClick={handleOpenFile}>{filePath}</div>
         {/* <ScriptIcon onClick={handleScript} /> */}
       </div>
@@ -63,6 +64,6 @@ export default function SettingView() {
         defaultValue={content}
         onChange={handleEdit}
       />
-    </div>
+    </Layout>
   )
 }

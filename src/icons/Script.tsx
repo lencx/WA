@@ -9,7 +9,7 @@ interface ScriptIconProps {
 
 const ScriptIcon: FC<ScriptIconProps> = ({ className, color = '#e2c353', onClick }) => {
   return (
-    <span className={clsx('wa-ico', className)} onClick={onClick} title="Add script">
+    <span className={clsx('wa-ico', className)} onClick={onClick} title="Add Script">
       <svg
         className="ico-script"
         viewBox="0 0 1024 1024"

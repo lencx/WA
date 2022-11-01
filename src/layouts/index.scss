@@ -1,0 +1,22 @@
+.wa-layout {
+  .wa-side {
+    position: fixed;
+    width: 30px;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: #eee;
+    text-align: center;
+    padding: 5px 0;
+  }
+
+  .wa-content {
+    padding-left: 30px;
+  }
+
+  &.shortcut {
+    .wa-content {
+      padding-left: 0;
+    }
+  }
+}

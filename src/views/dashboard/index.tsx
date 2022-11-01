@@ -2,13 +2,14 @@ import { useRecoilValue } from 'recoil';
 
 import { waSettingData } from '@/hooks/useWA';
 import Error from '@/components/Error';
+import Layout from '@/layouts';
 import AppItem, { type AppData } from '@/components/AppItem';
 import './index.scss';
 
 export default function DashboardView() {
   const settingJSON = useRecoilValue(waSettingData);
   return (
-    <div className="dashboard">
+    <Layout className="dashboard">
       <Error type="WA+ Setting" data={settingJSON} shortcut="CmdOrCtrl + ," />
       {settingJSON?.app?.map((group: any, idx: number) => {
           return (
@@ -27,6 +28,6 @@ export default function DashboardView() {
           )
         })
       }
-    </div>
+    </Layout>
   )
 }
