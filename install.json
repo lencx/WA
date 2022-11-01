@@ -1,0 +1,35 @@
+{
+  "version": "v0.1.6",
+  "notes": "- feat: add menu",
+  "pub_date": "2022-11-01T03:44:01.436Z",
+  "platforms": {
+    "win64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS1ZJbWdGNWVxVXRqb2FZUmlzdjdteWJ0a2d1Vk52dmtXSHkyU1kxVmQzYVlrS3RSL3VUYWcvTnRsQ05LekRNVmF0a1FyNzBrMFlwU0VzNW9qUnQrRzY5WEsvZ09kQndFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjY3Mjc0MDc2CWZpbGU6V0ErXzAuMS42X3g2NF9lbi1VUy5tc2kuemlwCi9oWHA3M0dka1p1WkpJYTdELzlSN1FJUlZPN1M3VXA0OXpWZm5JdGM4M21ya0xTV29GTjF2d3NTRmFxNkZNVEFZR1k3WWEyb2R1OURVTk5tWG95dEJBPT0K",
+      "url": "https://github.com/lencx/WA/releases/download/v0.1.6/WA%2B_0.1.6_x64_en-US.msi.zip"
+    },
+    "linux": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS1ZJbWdGNWVxVW1yQ3hVOXdzc2MwWVVzdWYwaG5SeVgzNGVBVEgvUzduWWhZNWw2ZlFodDcxeHlFcEFZRGQ5akFxcFZ2VkFqQmNqUHpObCtOeUVkR2xTeHZFRzNQcEFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjY3Mjc0MTk1CWZpbGU6d2FfMC4xLjZfYW1kNjQuQXBwSW1hZ2UudGFyLmd6Cm0xNGFFaTl5NVhHbHplZGlaRkNPYXlLWitxUkN0NXRKWVRuYXhOQi9xcGdNRHJzQWRheGdJL0EvMVFhQ1QzRnUvWDV4ZWlSeFZDR04raUJzVWZyVUFBPT0K",
+      "url": "https://github.com/lencx/WA/releases/download/v0.1.6/wa_0.1.6_amd64.AppImage.tar.gz"
+    },
+    "darwin": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS1ZJbWdGNWVxVXRQT1hLS0RXUDJ4ZVdBSDArNEdXejQyMTlpSExYVTl4OExFQ096Sm85UmdMWnlTaEU5aVZEaWtRVmg5WXVjNU5ZdC9TVUhyUGVxRVZtS2R5UThFN2dvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjY3Mjc0MTc1CWZpbGU6V0ErLmFwcC50YXIuZ3oKdUFmU21TcXZ3MWo2eUNYMDRSYWVXTEd0a1dFcjY3d3ZSc2Z0bkcxdGRvcS9HYUxJN3hpMVVuWTlCRUhaY3JxckxyY1RVWC9VSmF1VkNWOTZxa1QzREE9PQo=",
+      "url": "https://github.com/lencx/WA/releases/download/v0.1.6/WA%2B.app.tar.gz"
+    },
+    "darwin-aarch64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS1ZJbWdGNWVxVXRQT1hLS0RXUDJ4ZVdBSDArNEdXejQyMTlpSExYVTl4OExFQ096Sm85UmdMWnlTaEU5aVZEaWtRVmg5WXVjNU5ZdC9TVUhyUGVxRVZtS2R5UThFN2dvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjY3Mjc0MTc1CWZpbGU6V0ErLmFwcC50YXIuZ3oKdUFmU21TcXZ3MWo2eUNYMDRSYWVXTEd0a1dFcjY3d3ZSc2Z0bkcxdGRvcS9HYUxJN3hpMVVuWTlCRUhaY3JxckxyY1RVWC9VSmF1VkNWOTZxa1QzREE9PQo=",
+      "url": "https://github.com/lencx/WA/releases/download/v0.1.6/WA%2B.app.tar.gz"
+    },
+    "darwin-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS1ZJbWdGNWVxVXRQT1hLS0RXUDJ4ZVdBSDArNEdXejQyMTlpSExYVTl4OExFQ096Sm85UmdMWnlTaEU5aVZEaWtRVmg5WXVjNU5ZdC9TVUhyUGVxRVZtS2R5UThFN2dvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjY3Mjc0MTc1CWZpbGU6V0ErLmFwcC50YXIuZ3oKdUFmU21TcXZ3MWo2eUNYMDRSYWVXTEd0a1dFcjY3d3ZSc2Z0bkcxdGRvcS9HYUxJN3hpMVVuWTlCRUhaY3JxckxyY1RVWC9VSmF1VkNWOTZxa1QzREE9PQo=",
+      "url": "https://github.com/lencx/WA/releases/download/v0.1.6/WA%2B.app.tar.gz"
+    },
+    "linux-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS1ZJbWdGNWVxVW1yQ3hVOXdzc2MwWVVzdWYwaG5SeVgzNGVBVEgvUzduWWhZNWw2ZlFodDcxeHlFcEFZRGQ5akFxcFZ2VkFqQmNqUHpObCtOeUVkR2xTeHZFRzNQcEFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjY3Mjc0MTk1CWZpbGU6d2FfMC4xLjZfYW1kNjQuQXBwSW1hZ2UudGFyLmd6Cm0xNGFFaTl5NVhHbHplZGlaRkNPYXlLWitxUkN0NXRKWVRuYXhOQi9xcGdNRHJzQWRheGdJL0EvMVFhQ1QzRnUvWDV4ZWlSeFZDR04raUJzVWZyVUFBPT0K",
+      "url": "https://github.com/lencx/WA/releases/download/v0.1.6/wa_0.1.6_amd64.AppImage.tar.gz"
+    },
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS1ZJbWdGNWVxVXRqb2FZUmlzdjdteWJ0a2d1Vk52dmtXSHkyU1kxVmQzYVlrS3RSL3VUYWcvTnRsQ05LekRNVmF0a1FyNzBrMFlwU0VzNW9qUnQrRzY5WEsvZ09kQndFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjY3Mjc0MDc2CWZpbGU6V0ErXzAuMS42X3g2NF9lbi1VUy5tc2kuemlwCi9oWHA3M0dka1p1WkpJYTdELzlSN1FJUlZPN1M3VXA0OXpWZm5JdGM4M21ya0xTV29GTjF2d3NTRmFxNkZNVEFZR1k3WWEyb2R1OURVTk5tWG95dEJBPT0K",
+      "url": "https://github.com/lencx/WA/releases/download/v0.1.6/WA%2B_0.1.6_x64_en-US.msi.zip"
+    }
+  }
+}
