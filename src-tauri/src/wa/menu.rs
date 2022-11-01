@@ -36,10 +36,10 @@ pub fn init(context: &Context<EmbeddedAssets>) -> Menu {
     let view_menu = Submenu::new(
         "View",
         Menu::new()
-        .add_item(CustomMenuItem::new("go_back".to_string(), "Go Back").accelerator("CmdOrCtrl+["))
-        .add_item(CustomMenuItem::new("go_forward".to_string(), "Go Forward").accelerator("CmdOrCtrl+]"))
-        // .add_item(CustomMenuItem::new("scroll_top".to_string(), "Scroll to Top of Screen").accelerator("CmdOrCtrl+ArrowUp"))
-        // .add_item(CustomMenuItem::new("scroll_bottom".to_string(), "Scroll to Bottom of Screen").accelerator("CmdOrCtrl+ArrowDown"))
+        .add_item(CustomMenuItem::new("go_back".to_string(), "Go Back").accelerator("CmdOrCtrl+Left"))
+        .add_item(CustomMenuItem::new("go_forward".to_string(), "Go Forward").accelerator("CmdOrCtrl+Right"))
+        .add_item(CustomMenuItem::new("scroll_top".to_string(), "Scroll to Top of Screen").accelerator("CmdOrCtrl+Up"))
+        .add_item(CustomMenuItem::new("scroll_bottom".to_string(), "Scroll to Bottom of Screen").accelerator("CmdOrCtrl+Down"))
         .add_native_item(MenuItem::Separator)
         .add_item(CustomMenuItem::new("reload".to_string(), "Refresh the Screen").accelerator("CmdOrCtrl+R"))
     );

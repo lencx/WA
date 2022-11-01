@@ -30,8 +30,10 @@ pub async fn wa_window(
             dialog::message(Some(&main_window), &title, err_msg);
             "".to_string()
         });
-        user_script = format!("{}{}", user_script, content);
+        user_script = format!("{}\n\n// ***** [{}] User Script Inject ***** \n\n{}\n", user_script, title, content);
     }
+
+    user_script = format!("(function() {{window.addEventListener('DOMContentLoaded', function() {{{}}})}})();", user_script);
 
     std::thread::spawn(move || {
         let _window = tauri::WindowBuilder::new(

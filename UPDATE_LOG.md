@@ -1,5 +1,9 @@
 # UPDATE LOG
 
+## v0.1.6
+
+- feat: add menu
+
 ## v0.1.5
 
 - feat: search result

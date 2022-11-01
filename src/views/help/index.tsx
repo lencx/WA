@@ -17,20 +17,20 @@ export default function HelpView() {
       </div>
       <div className="feat">
         <h2>Shortcut</h2>
+        <div className="tips">Note: CmdOrCtrl - <code>Command(MacOS)</code> or <code>Control(Windows)</code></div>
         <div className="shortcut-wa">
           <h3>WA+ Shortcut</h3>
           <div className="item"><code>CmdOrCtrl + ,</code>: WA+ setting</div>
-          <div className="item"><code>CmdOrCtrl + [</code>: Go Back</div>
-          <div className="item"><code>CmdOrCtrl + ]</code>: Go Forward</div>
+          <div className="item"><code>CmdOrCtrl + ←</code>: Go Back</div>
+          <div className="item"><code>CmdOrCtrl + →</code>: Go Forward</div>
           <div className="item"><code>CmdOrCtrl + ↑</code>: Scroll to Top of Screen</div>
           <div className="item"><code>CmdOrCtrl + ↓</code>: Scroll to Bottom of Screen</div>
           <div className="item"><code>CmdOrCtrl + r</code>: Refresh the Screen</div>
         </div>
         <div className="shortcut-global">
           <h3>Global Shortcut:</h3>
-          <div className="item"><code className="note">CmdOrCtrl+Shift+S</code>: Spotlight Search</div>
+          <div className="item"><code>CmdOrCtrl + Shift + S</code>: Spotlight Search</div>
         </div>
-        <div className="tips">Note: CmdOrCtrl - <code>Command(MacOS)</code> or <code>Control(Windows)</code></div>
       </div>
       <div className="feat">
         <h2>Custom Setting (Default):</h2>
@@ -42,10 +42,10 @@ export default function HelpView() {
           <li><code>shortcut.search</code>: Quick search for apps (global shortcut)</li>
           <li><code>app</code>: Application List</li>
           <ul>
-            <li><code className="note">app.type</code>: Application Category</li>
-            <li><code className="note">app.items.name</code>: Application name</li>
-            <li><code className="note">app.items.url</code>: Application URL</li>
-            <li><code>app.items.icon</code>: Application icon (square logo: support <code>svg</code>, <code>url</code>, <code>base64</code>)</li>
+            <li><code className="note">app.type</code>: Web Category</li>
+            <li><code className="note">app.items.name</code>: Web Title</li>
+            <li><code className="note">app.items.url</code>: Web URL</li>
+            <li><code>app.items.icon</code>: Web Icon (square logo: support <code>svg</code>, <code>url</code>, <code>base64</code>)</li>
             <li><code>app.items.script</code>: Custom script, <code>~/.wa/scripts</code> is the script root path, please use a relative path, such as <code>./user.js</code></li>
           </ul>
         </ul>

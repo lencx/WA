@@ -17,10 +17,10 @@ Making a web page more like a desktop application is just the beginning, the pos
 
 - Multi-platform: `macOS` `Windows` `Linux`
 - Configuration via file: `~/.wa/setting.json`
-- Custom scripts: `~/.wa/scripts` is the script root path, please use a relative path, such as `./user.js`
-- Custom Shortcut
 - Spotlight Search
 - Check for updates at startup
+- System Menu
+- ...
 
 ## Preview
 
@@ -44,21 +44,20 @@ Making a web page more like a desktop application is just the beginning, the pos
 - 配置简单：配置文件采用统一的 JSON 格式数据，支持导出分享。
 - 安装包小：因采用 Tauri 来打包应用，使用系统内置的 Webview，所以各平台安装包一般都控制在几兆之内。
 - 更加专注：配置的每一个网址都会新开一个应用窗口，防止误操作（没有浏览器的各种按钮，状态栏，搜索框等）。非常适合无客户端类网站。如 Blog，技术文档，视频，在线工具等。
-- 聚焦搜索：支持全局快捷键，通过快捷键唤起搜索框，快速检索配置的网址并打开应用窗口。
+- 聚焦搜索：支持全局快捷键唤起搜索框，快速检索配置的网址并打开应用窗口。
 - 脚本注入：适合有编程经验的用户，对特定网站进行修改。
 - 绿色安全：代码完全开源，值得信赖。
-- 系统调度：可以和操作系统进行交互，带来无限的想象（计划中）。
+- 系统调度：可以和操作系统进行交互，带来无限的想象（开发中）。
 
 ### 计划
 
-- 脚本编辑器
-- 定制化主题
-- 网址拖拽排序
-- 配置可视化
-- 聚焦搜索结果列表
 - 国际化
+- 拖拽排序
 - 系统托盘
 - 系统交互
+- 脚本编辑器
+- 定制化主题
+- 配置可视化
 - ...
 
 ## 开发教程

@@ -42,14 +42,13 @@
   }
 
   h3 {
-    margin: 12px 0 5px;
+    margin: 10px 0 0px;
     font-size: 13px;
   }
 
   .tips {
-    margin-top: 5px;
     font-size: 12px;
-    color: var(--theme-blue);
+    color: var(--theme-red);
     font-weight: bold;
   }
 
@@ -60,7 +59,7 @@
   }
 
   code.note {
-    background-color: var(--theme-blue);
+    background-color: var(--theme-red);
   }
 
   .shortcut-wa .item {
