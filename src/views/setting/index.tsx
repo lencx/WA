@@ -2,9 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { homeDir, join } from '@tauri-apps/api/path';
-import { invoke } from '@tauri-apps/api/tauri';
 import debounce from 'lodash/debounce';
 
+import { openFile } from '@/plugins';
 import useInit from '@/hooks/useInit';
 import { waSettingFile } from '@/hooks/useWA';
 // import GoBack from '@/components/GoBack';
@@ -47,7 +47,7 @@ export default function SettingView() {
 
   const handleOpenFile = async () => {
     const homePath = await homeDir();
-    await invoke('open_file', { path: await join(homePath, '.wa', 'setting.json') })
+    openFile(await join(homePath, '.wa', 'setting.json'));
   };
 
   useInit(async () => {

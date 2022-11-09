@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { homeDir, join } from '@tauri-apps/api/path';
-import { invoke } from '@tauri-apps/api/tauri';
 import debounce from 'lodash/debounce';
 
+import { openFile } from '@/plugins';
 import GoBack from '@/components/GoBack';
 import Editor from '@/components/Editor';
 // import { scriptPath } from '@/utils';
@@ -23,7 +23,7 @@ export default function ScriptView() {
 
   const handleOpenFile = async () => {
     const homePath = await homeDir();
-    await invoke('open_file', { path: await join(homePath, '.wa', 'scripts') })
+    openFile(await join(homePath, '.wa', 'scripts'));
   };
 
   return (

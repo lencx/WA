@@ -1,13 +1,12 @@
-use crate::{utils, wa::conf};
-use std::{fs, process::Command};
+use std::fs;
 use tauri::{api::dialog, command, Manager, WindowEvent};
 
 #[cfg(not(target_os = "linux"))]
 use window_shadows::set_shadow;
-
 #[cfg(not(target_os = "linux"))]
 use window_vibrancy::{self, NSVisualEffectMaterial};
 
+use crate::{utils, wa::conf};
 #[cfg(target_os = "macos")]
 use crate::wa::mac::set_transparent_titlebar;
 
@@ -51,22 +50,6 @@ pub async fn wa_window(
         //     dbg!(event);
         // });
     });
-}
-
-#[command]
-pub fn open_file(path: &str) {
-    #[cfg(target_os = "windows")]
-    Command::new("explorer")
-        .args(["/select,", path])
-        .spawn()
-        .unwrap();
-
-    #[cfg(target_os = "macos")]
-    Command::new("open").args(["-R", path]).spawn().unwrap();
-
-    // https://askubuntu.com/a/31071
-    #[cfg(target_os = "linux")]
-    Command::new("xdg-open").arg(path).spawn().unwrap();
 }
 
 #[command]
