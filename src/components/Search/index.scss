@@ -33,9 +33,17 @@
     width: 100%;
   }
 
-  i.app-icon {
-    display: inline-block;
-    width: 100% !important;
-    height: 100% !important;
+  .app-icon {
+    width: 24px;
+    height: 24px;
+    user-select: none;
+    text-align: center;
+    line-height: 24px;
+    font-size: 16px;
+
+    svg {
+      width: 100% !important;
+      height: 100% !important;
+    }
   }
 }

@@ -2,6 +2,7 @@ import { FC } from 'react';
 import clsx from 'clsx';
 import { invoke } from '@tauri-apps/api/tauri';
 
+import { isSVG, isEmoji } from '@/utils';
 import waIcon from '@/assets/logo.svg';
 import './index.scss';
 
@@ -22,8 +23,6 @@ interface AppItemProps {
 }
 
 const AppItem: FC<AppItemProps> = ({ type, data, size = 'lg', disabled = false }) => {
-  const isSvg = /<\s*svg[^>]*>(.*?)<\/\s*svg>/g.test(data?.icon);
-
   const handleWaWindow = async () => {
     if (disabled) return;
     if (!data.url) return;
@@ -37,7 +36,7 @@ const AppItem: FC<AppItemProps> = ({ type, data, size = 'lg', disabled = false }
 
   return (
     <div className={clsx('wa-app-item', size)} onClick={handleWaWindow} title={data.name}>
-      {isSvg
+      {isSVG(data?.icon) || isEmoji(data?.icon)
         ? <i className="app-icon" dangerouslySetInnerHTML={{ __html: data.icon }} />
         : <img className="app-icon" src={data.icon ? data.icon : waIcon} /> }
       <div className="app-name">{data.name}</div>
