@@ -63,10 +63,9 @@ pub fn search_window(app: tauri::AppHandle) {
         )
         .inner_size(560.0, 60.0)
         .always_on_top(true)
-        .title("WA+ Search")
         .resizable(false)
         .transparent(true)
-        .focus()
+        .hidden_title(true)
         .build()
         .unwrap();
 
@@ -113,7 +112,6 @@ pub fn setting_window(app: tauri::AppHandle) {
             .inner_size(800.0, 600.0)
             .center()
             .title("WA+ Setting")
-            .focus()
             .build()
             .unwrap()
             .on_window_event(move |event| match event {

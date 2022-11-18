@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 
+import { isSVG, isEmoji } from '@/utils';
 import waIcon from '@/assets/logo.svg';
 
 interface SearchIconProps {
@@ -13,9 +14,9 @@ const SearchIcon: FC<SearchIconProps> = ({ className, icon = waIcon }) => {
 
   return (
     <div className={clsx('search-data-ico', className)}>
-      {isSvg
+      {isSVG(icon) || isEmoji(icon)
         ? <i className="app-icon" dangerouslySetInnerHTML={{ __html: icon }} />
-        : <img className="app-icon" src={icon} /> }
+        : <img className="app-icon" src={icon ? icon : waIcon} /> }
     </div>
   );
 }
