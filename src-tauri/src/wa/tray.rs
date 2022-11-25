@@ -10,10 +10,9 @@ pub fn tray_blink(
     icon_path_2: Option<String>,
 ) {
     // https://docs.rs/tokio/latest/tokio/task/struct.JoinHandle.html#method.abort
-    match state.tray_blink_id.lock().as_deref_mut().map(|x| x.as_mut()) {
-        Ok(Some(v)) => v.abort(),
-        _ => (),
-    }
+    if let Ok(Some(v)) = state.tray_blink_id.lock()
+        .as_deref_mut()
+        .map(|x| x.as_mut()) { v.abort() }
 
     if !is_run {
         return;
@@ -26,7 +25,7 @@ pub fn tray_blink(
 
         loop {
             // ms: default is 500ms
-            tokio::time::sleep(std::time::Duration::from_millis(ms.unwrap_or_else(|| 500))).await;
+            tokio::time::sleep(std::time::Duration::from_millis(ms.unwrap_or(500))).await;
             count += 1;
 
             let path = if count % 2 == 0 {
