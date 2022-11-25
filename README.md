@@ -3,6 +3,8 @@
   <h2 align="center">WA+</h2>
 </p>
 
+[![WA+ downloads](https://img.shields.io/github/downloads/lencx/wa/total.svg?style=flat-square)](https://github.com/lencx/WA/releases)
+
 > WA+ = W(eb) + A(pp) + more...\
 > 🤩 哇，无限可能！
 

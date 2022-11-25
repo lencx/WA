@@ -16,9 +16,10 @@ tauri-build = { version = "1.1", features = ["isolation"] }
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.2", features = ["api-all", "devtools", "global-shortcut", "isolation", "macos-private-api", "updater"] }
+tauri = { version = "1.2", features = ["api-all", "devtools", "global-shortcut", "icon-png", "isolation", "macos-private-api", "system-tray", "updater"] }
 anyhow = "1.0.65"
 thiserror = "1.0.37"
+tokio = { version = "1.22.0", features = ["macros", "rt-multi-thread", "time"] }
 
 [target.'cfg(not(target_os = "linux"))'.dependencies]
 window-shadows = "0.2.0"
