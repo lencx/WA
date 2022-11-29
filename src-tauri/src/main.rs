@@ -9,6 +9,7 @@ mod plugins;
 
 #[tokio::main]
 async fn main() {
+
     let content = tauri::generate_context!();
     tauri::Builder::default()
         .manage(wa::conf::WAState::default())

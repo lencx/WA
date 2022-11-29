@@ -8,9 +8,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "tauri": "tauri",
-    "updater": "node scripts/updater.mjs",
-    "release": "node scripts/release.mjs",
-    "fix:linux": "node scripts/build.linux.mjs"
+    "updater": "tr updater",
+    "release": "tr release --git",
+    "fix:linux": "tr override --name=WA"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.2",
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@actions/github": "^5.1.1",
     "@tauri-apps/cli": "^1.2.0",
+    "@tauri-release/cli": "^0.1.1",
     "@types/lodash": "^4.14.186",
     "@types/node": "^18.7.10",
     "@types/react": "^18.0.15",
