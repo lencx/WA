@@ -35,7 +35,7 @@ pub fn setting_init(app: tauri::AppHandle) {
     let setting = wa_path(WA_SETTING);
     let content = fs::read_to_string(setting).unwrap();
     let setting_json = read_json(&content).unwrap_or_else(|_| json!({ "title": "WA+" }));
-    let title = &setting_json["title"].as_str().unwrap_or_else(|| "WA+");
+    let title = &setting_json["title"].as_str().unwrap_or("WA+");
     let main_window = app.get_window("main").unwrap();
 
     // set title
