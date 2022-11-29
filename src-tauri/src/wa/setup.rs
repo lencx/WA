@@ -5,7 +5,7 @@ use crate::{utils, wa::conf, wa::cmd};
 pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>> {
     // check `~/.wa/setting.json`
     let wa = app.handle();
-    let setting_file = &utils::wa_path("setting.json").to_owned();
+    let setting_file = &utils::wa_path("setting.json");
 
     if !utils::exists(setting_file) {
         // create setting.json

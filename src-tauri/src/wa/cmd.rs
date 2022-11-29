@@ -20,12 +20,12 @@ pub async fn wa_window(
 ) {
     // window.open not working: https://github.com/tauri-apps/wry/issues/649
     let mut user_script = conf::WA_INIT_SCRIPT.to_string();
-    if !script.is_none() && !script.as_ref().unwrap().is_empty() {
+    if script.is_some() && !script.as_ref().unwrap().is_empty() {
         let script = utils::wa_script_path(&script.unwrap());
-        let script_path = script.clone().to_string_lossy().to_string();
+        let script_path = script.to_string_lossy().to_string();
         let content = fs::read_to_string(script).unwrap_or_else(|msg| {
             let main_window = app.get_window("main").unwrap();
-            let err_msg = format!("[app.items.script] {}\n{}", script_path, msg.to_string());
+            let err_msg = format!("[app.items.script] {}\n{}", script_path, msg);
             dialog::message(Some(&main_window), &title, err_msg);
             "".to_string()
         });
@@ -65,17 +65,21 @@ pub fn search_window(app: tauri::AppHandle) {
         .always_on_top(true)
         .resizable(false)
         .transparent(true)
-        .hidden_title(true)
         .build()
         .unwrap();
 
-        search_win.on_window_event(move |event| match event {
-            WindowEvent::Focused(is_focused) => {
-                if !is_focused {
-                    app.get_window("search").unwrap().close().unwrap();
-                }
+        // search_win.on_window_event(move |event| match event {
+        //     WindowEvent::Focused(is_focused) => {
+        //         if !is_focused {
+        //             app.get_window("search").unwrap().close().unwrap();
+        //         }
+        //     }
+        //     _ => (),
+        // });
+        search_win.on_window_event(move |event| if let WindowEvent::Focused(is_focused) = event {
+            if !is_focused {
+                app.get_window("search").unwrap().close().unwrap();
             }
-            _ => (),
         });
 
         #[cfg(target_os = "macos")]
@@ -114,16 +118,23 @@ pub fn setting_window(app: tauri::AppHandle) {
             .title("WA+ Setting")
             .build()
             .unwrap()
-            .on_window_event(move |event| match event {
-                WindowEvent::Destroyed { .. } => {
-                    utils::setting_init(app.clone());
-                    app.get_window("main")
-                        .unwrap()
-                        .emit("WA_EVENT", "SETTING_RELOAD")
-                        .unwrap();
-                }
-                _ => (),
+            .on_window_event(move |event| if let WindowEvent::Destroyed { .. } = event {
+                utils::setting_init(app.clone());
+                app.get_window("main")
+                    .unwrap()
+                    .emit("WA_EVENT", "SETTING_RELOAD")
+                    .unwrap();
             });
+            // .on_window_event(move |event| match event {
+            //     WindowEvent::Destroyed { .. } => {
+            //         utils::setting_init(app.clone());
+            //         app.get_window("main")
+            //             .unwrap()
+            //             .emit("WA_EVENT", "SETTING_RELOAD")
+            //             .unwrap();
+            //     }
+            //     _ => (),
+            // });
         });
     }
 }
